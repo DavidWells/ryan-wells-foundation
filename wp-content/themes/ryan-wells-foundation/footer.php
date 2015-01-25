@@ -54,9 +54,17 @@ global $dd_paypal_url;
 
 			<?php endif; ?>
 
+			<div id="disclaimer">
+				<div class="container">
+				A COPY OF THE OFFICIAL REGISTRATION AND FINANCIAL INFORMATION MAY BE OBTAINED FROM THE DIVISION OF CONSUMER SERVICES BY CALLING TOLL FREE WITHIN FLORIDA 1-800-435-7352 OR BY <a href="HTTP://WWW.FRESHFROMFLORIDA.COM/DIVISIONS-OFFICES/CONSUMER-SERVICES/BUSINESS-SERVICES/CHARITABLE-ORGANIZATIONS">VISTING THIS LINK</a>.  REGISTRATION DOES NOT IMPLY ENDORSEMENT, APPROVAL OR RECOMMENDATION BY THE STATE.
+				</div>
+			</div>
+
+
 			<div id="footer-colors">
 				<?php dd_multicol_colors(); ?>
 			</div><!-- footer-colors -->
+
 
 		</footer><!-- #footer -->
 
@@ -98,7 +106,7 @@ global $dd_paypal_url;
 			 */
 
 			$cause_id = get_the_ID();
-			
+
 			if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
 
 				global $dd_lang_curr;
@@ -127,14 +135,14 @@ global $dd_paypal_url;
 					<form action="<?php echo $dd_paypal_url; ?>" method="post">
 
 						<div class="lb-overlay-form-amount">
-							
+
 								<input name="amount" type="number" value="<?php echo ot_get_option( $dd_sn . 'donation_default_amount', '50' ); ?>" min="1" />
 								<input type="hidden" name="cmd" value="_xclick">
 								<input type="hidden" name="business" value="<?php echo ot_get_option( $dd_sn . 'paypal_email' ); ?>">
 								<input type="hidden" name="item_name" value="<?php echo get_the_title( get_the_ID() ); ?>">
 								<input type="hidden" name="item_number" value="<?php echo $cause_id; ?>">
-								<input type="hidden" name="currency_code" value="<?php echo ot_get_option( $dd_sn . 'paypal_currency', 'USD' ); ?>">		
-								<input type="hidden" name="return" value="<?php echo add_query_arg( 'processed', 'yes', get_permalink( get_the_ID() ) ); ?>">		
+								<input type="hidden" name="currency_code" value="<?php echo ot_get_option( $dd_sn . 'paypal_currency', 'USD' ); ?>">
+								<input type="hidden" name="return" value="<?php echo add_query_arg( 'processed', 'yes', get_permalink( get_the_ID() ) ); ?>">
 								<input type="hidden" name="notify_url" value="<?php echo get_template_directory_uri(); ?>/inc/ipn.php">
 
 								<span class="lb-overlay-form-amount-ccode"><?php echo ot_get_option( $dd_sn . 'paypal_currency_char', '$' ); ?></span>
@@ -189,7 +197,7 @@ global $dd_paypal_url;
 							</ul>
 						</div>
 
-					<?php endif; ?> 
+					<?php endif; ?>
 
 					<div class="lb-overlay-form-user">
 						<input type="text" value="" name="dd_login_user" placeholder="<?php _e( 'USERNAME', 'dd_string' ); ?>">

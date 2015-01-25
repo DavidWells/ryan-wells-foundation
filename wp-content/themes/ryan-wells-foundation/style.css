@@ -21,7 +21,9 @@
 /**
  * #2 Typography & Elements
  */
-
+	#disclaimer {
+		text-align: center;
+	}
 	/* General */
 
 	body {
