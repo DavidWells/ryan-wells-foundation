@@ -309,7 +309,7 @@ $body_class = '';
 
 						<?php if ( ot_get_option( $dd_sn . 'header_user_links', 'enabled' ) == 'enabled' ) : ?>
 
-							<div id="header-user-links">
+							<div id="header-user-links" style="display:none;">
 
 								<?php if ( is_user_logged_in() ) : ?>
 
