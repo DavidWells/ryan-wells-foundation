@@ -23,6 +23,7 @@
  */
 	#disclaimer {
 		text-align: center;
+		padding: 20px;
 	}
 	/* General */
 
@@ -991,7 +992,7 @@
 
 				.slide-info {
 					background: rgba(7,15,21,.75);
-					bottom: 40px;
+					bottom: 25px;
 					-moz-box-shadow: 0 3px 7px rgba(0,0,0,.44);
 					-webkit-box-shadow: 0 3px 7px rgba(0,0,0,.44);
 					box-shadow: 0 3px 7px rgba(0,0,0,.44);

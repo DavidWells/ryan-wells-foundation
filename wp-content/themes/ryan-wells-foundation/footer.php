@@ -56,7 +56,8 @@ global $dd_paypal_url;
 
 			<div id="disclaimer">
 				<div class="container">
-				A COPY OF THE OFFICIAL REGISTRATION AND FINANCIAL INFORMATION MAY BE OBTAINED FROM THE DIVISION OF CONSUMER SERVICES BY CALLING TOLL FREE <br> WITHIN FLORIDA 1-800-435-7352 OR BY <a href="HTTP://WWW.FRESHFROMFLORIDA.COM/DIVISIONS-OFFICES/CONSUMER-SERVICES/BUSINESS-SERVICES/CHARITABLE-ORGANIZATIONS">VISTING THIS LINK</a>. REGISTRATION DOES NOT IMPLY ENDORSEMENT, APPROVAL OR RECOMMENDATION BY THE STATE.
+				A copy of the official registration and financial information may be obtained from the division of consumer services by calling toll free <br> within florida 1-800-435-7352 or by <a href="HTTP://WWW.FRESHFROMFLORIDA.COM/DIVISIONS-OFFICES/CONSUMER-SERVICES/BUSINESS-SERVICES/CHARITABLE-ORGANIZATIONS" target="_blank">visting this link</a>. Registration does not imply endorsement, approval or recommendation by the state.
+
 				</div>
 			</div>
 
