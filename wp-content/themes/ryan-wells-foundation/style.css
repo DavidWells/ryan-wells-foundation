@@ -25,6 +25,12 @@
 		text-align: center;
 		padding: 20px;
 	}
+	.page-template-template-donate #footer-banner {
+		display: none;
+	}
+	#logo {
+	margin-top: -21px;
+	}
 	/* General */
 
 	body {
