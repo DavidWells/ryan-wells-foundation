@@ -1128,7 +1128,7 @@
 						#slider-nav .slide-inner {
 							border-top: 1px solid rgba(255, 255, 255, 0.14);
 							overflow: hidden;
-							padding: 20px 0;
+							padding: 10px 0;
 						}
 
 						#slider-nav .slide:first-child .slide-inner,
@@ -1160,6 +1160,7 @@
 									display: block;
 									font-family: "Oswald", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 									line-height: 1.5;
+									padding-top: 20px;
 								}
 
 								.slider-nav-funded {
