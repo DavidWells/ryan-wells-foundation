@@ -593,7 +593,7 @@
 	}
 
 		#header-inner {
-			padding: 40px 0 25px;
+			padding: 21px 0 6px;
 		}
 
 			#logo {
@@ -603,6 +603,7 @@
 
 				#logo img {
 					display: block;
+					max-width: 233px;
 				}
 
 			/* Essential styles for superfish menu */
@@ -620,6 +621,7 @@
 			ul.sf-menu li li li:hover ul, ul.sf-menu li li li.sfHover ul { left: 100%; /* match ul width */ }
 
 			#nav {
+				padding-top: 8px;
 				float: left;
 				font-family: "Oswald", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 			}
@@ -632,19 +634,18 @@
 
 				#nav > div {
 					float: left;
-					margin-right: 20px;
 				}
 
 					#nav .sf-menu {
-						border-left: 1px solid #3c4247;
+
 						list-style-type: none;
 						margin: 0;
 						padding: 0;
 					}
 
 						#nav .sf-menu > li {
-							display: block;
-							margin: 0 0 17px 20px;
+							display: inline-block;
+							margin: 10px;
 						}
 
 							#nav .sf-menu > li > a {
@@ -5440,3 +5441,8 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
 			}
 
 		}
+
+/* custom */
+#nav .sf-menu > li > a {
+	font-size:15px;
+}
