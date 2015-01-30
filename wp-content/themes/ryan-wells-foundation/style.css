@@ -1104,6 +1104,9 @@
 				width: 260px;
 				z-index: 1000;
 			}
+			#slider-nav, #slider {
+				max-height: 480px;
+			}
 
 			.ie-ver-8 #slider-nav {
 				background: transparent url("images/misc/dark-overlay-fallback.png");
