@@ -1104,7 +1104,7 @@
 				width: 260px;
 				z-index: 1000;
 			}
-			#slider-nav, #slider, #slide {
+			#slider-nav, #slider, #slide, .flexslider .slides > li {
 				max-height: 480px;
 			}
 
