@@ -621,7 +621,7 @@
 			ul.sf-menu li li li:hover ul, ul.sf-menu li li li.sfHover ul { left: 100%; /* match ul width */ }
 
 			#nav {
-				padding-top: 8px;
+				padding-top: 7px;
 				float: left;
 				font-family: "Oswald", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 			}
@@ -5448,5 +5448,6 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
 
 /* custom */
 #nav .sf-menu > li > a {
-	font-size:15px;
+	font-size: 17px;
+padding-right: 9px;
 }
