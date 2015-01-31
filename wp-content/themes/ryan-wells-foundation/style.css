@@ -1275,7 +1275,7 @@
  */
 
  	#sub-header {
- 		background: #93cde8;
+ 		background: #AFAFAF;
  		color: #fff;
  		font-family: "Oswald", sans-serif;
  		font-size: 12px;
@@ -1284,7 +1284,7 @@
  	}
 
  		#sub-header a {
- 			border-right: 1px solid #8cc3dc;
+ 			border-right: 1px solid #939393;
  			border-width: 0 1px;
  			color: inherit;
  			display: block;
@@ -1301,7 +1301,7 @@
  			}
 
  		#sub-header a:first-child {
- 			border-left: 1px solid #8cc3dc;
+ 			border-left: 1px solid #939393;
  		}
 
  		#sub-header a.active,
@@ -1315,8 +1315,8 @@
  		}
 
  		#sub-header a:hover {
-			background: #38a4d7;
-			border-color: #38a4d7;
+			background: #7D1416;
+			border-color: #7D1416;
 		}
 
 		#sub-header a.no-posts,
