@@ -1311,7 +1311,7 @@
 
  		#sub-header .active,
  		#sub-header a.active {
- 			background: #38a4d7;
+ 			background: #7D1416;
  		}
 
  		#sub-header a:hover {
@@ -1322,7 +1322,7 @@
 		#sub-header a.no-posts,
  		#sub-header a.no-posts:hover {
  			background: transparent;
- 			border-color: #8cc3dc;
+ 			border-color: #9F9F9F;
  			cursor: default;
  			color: rgba(255, 255, 255, .4);
  			text-shadow: 0 1px 2px rgba( 0, 0, 0, .05);
