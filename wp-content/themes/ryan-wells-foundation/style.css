@@ -5451,3 +5451,6 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
 	font-size: 17px;
 padding-right: 9px;
 }
+.su-column-size-1-2 {
+width: 44% !important;
+}
