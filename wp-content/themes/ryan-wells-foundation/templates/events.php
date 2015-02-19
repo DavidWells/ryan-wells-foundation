@@ -104,9 +104,11 @@
 
 				<div class="event-main">
 
-					<div class="event-date"><span class="icon-calendar"></span><?php the_time( get_option( 'date_format' ) ); ?></div>
+
 
 					<h2 class="event-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+
+					<div class="event-date"><span class="icon-calendar"></span><?php the_time( get_option( 'date_format' ) ); ?></div>
 
 					<div class="event-excerpt">
 						<?php the_excerpt(); ?>
