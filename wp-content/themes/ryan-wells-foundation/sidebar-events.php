@@ -16,9 +16,7 @@
 			<?php if ( is_single() ) : ?>
 			<?php 	$id = get_the_ID();
 					$custom_sidebar = get_field('custom_sidebar_top', $id); ?>
-				<div id="sidebar-top">
-					<?php echo $custom_sidebar; ?>
-				</div>
+
 				<div class="widget">
 
 					<div class="widget-wrap">
@@ -30,6 +28,7 @@
 							<div class="event-info-widget-when">
 								<em><?php _e( 'When is it?', 'dd_string' ); ?></em>
 								<span><?php the_time('F jS, Y'); ?></span>
+								<?php echo $custom_sidebar; ?>
 							</div>
 
 							<?php $parity = 'odd'; ?>
