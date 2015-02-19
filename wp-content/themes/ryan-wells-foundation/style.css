@@ -3809,7 +3809,7 @@
 		}
 
 			#footer-banner-inner {
-				padding: 70px 0;
+				padding: 50px 0;
 				text-align: center;
 			}
 
@@ -5496,7 +5496,7 @@ text-shadow: 0 2px 2px rgba(0,0,0,.15);
 	width: 300px;
 }
 #or_mail {
-	margin-top: 20px;
+	margin-top: 20px !important;
 	font-style: italic;
 }
 #or_mail span {
