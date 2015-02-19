@@ -2085,6 +2085,10 @@ padding-left: 10px;
 				}
 				.event-info-widget-when .su-button-style-default span {
 					border-top-width: 0px;
+					margin-top: 0px;
+				}
+				.event-info-widget-when .su-button-style-default {
+					margin-top: 10px;
 				}
 
 					.event-info-widget-when span {
