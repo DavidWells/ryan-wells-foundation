@@ -101,7 +101,7 @@ $event_fb = get_post_meta( get_the_ID(), $dd_sn . 'event_facebook_link', true );
 					<?php
 
 					// Comments
-					if ( comments_open() || '0' != get_comments_number() ) { comments_template( '', true ); }
+					//if ( comments_open() || '0' != get_comments_number() ) { comments_template( '', true ); }
 
 				endwhile; endif;
 
