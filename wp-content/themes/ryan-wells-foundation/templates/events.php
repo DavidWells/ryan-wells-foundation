@@ -1,5 +1,5 @@
-<?php 
-	
+<?php
+
 	// Globals
 	global $dd_sn;
 	global $dd_post_class;
@@ -16,7 +16,7 @@
 
 	// Default - Thumb Size
 	if ( ! isset( $dd_thumb_size ) ) {
-		$dd_thumb_size = 'dd-one-third';	
+		$dd_thumb_size = 'dd-one-third';
 	}
 
 	// Default - Post Style
@@ -50,8 +50,8 @@
 ?>
 
 <?php if ( is_single() ) : ?>
-		
-	
+
+
 
 <?php else : ?>
 
@@ -65,14 +65,14 @@
 
 					<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( $dd_thumb_size ); ?></a>
 
-					<div class="event-date"><span class="icon-calendar"></span><?php the_time( get_option( 'date_format' ) ); ?></div>
-
 				</div><!-- .event-thumb -->
 
 				<div class="event-main">
 
 					<h2 class="event-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-						
+
+					<div class="event-date"><span class="icon-calendar"></span><?php the_time( get_option( 'date_format' ) ); ?></div>
+
 					<div class="event-excerpt">
 						<?php the_excerpt(); ?>
 					</div><!-- .event-excerpt -->
@@ -80,9 +80,9 @@
 				</div><!-- .event-main -->
 
 				<div class="event-info">
-					
+
 					<a href="<?php the_permalink(); ?>" class="dd-button small orange-light"><?php _e( 'MORE DETAILS', 'dd_string' ); ?></a>
-					
+
 					<?php if ( $fb_link != '' ) : ?>
 						<em><?php _e( 'or', 'dd_string' ); ?></em>
 						<a href="<?php echo $fb_link; ?>" target="_blank" class="dd-button small blue-light"><?php _e( 'FACEBOOK PAGE', 'dd_string' ); ?></a>
@@ -107,15 +107,15 @@
 					<div class="event-date"><span class="icon-calendar"></span><?php the_time( get_option( 'date_format' ) ); ?></div>
 
 					<h2 class="event-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-						
+
 					<div class="event-excerpt">
 						<?php the_excerpt(); ?>
 					</div><!-- .event-excerpt -->
 
 					<div class="event-info">
-					
+
 						<a href="<?php the_permalink(); ?>" class="dd-button small orange-light"><?php _e( 'MORE DETAILS', 'dd_string' ); ?></a>
-						
+
 						<?php if ( $fb_link != '' ) : ?>
 							<em><?php __( 'or', 'dd_string' ); ?></em>
 							<a href="<?php echo $fb_link; ?>" target="_blank" class="dd-button small blue-light"><?php _e( 'VIEW FACEBOOK PAGE', 'dd_string' ); ?></a>
