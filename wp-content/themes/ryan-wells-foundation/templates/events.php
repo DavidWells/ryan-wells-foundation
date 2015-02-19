@@ -116,7 +116,7 @@
 
 					<div class="event-info">
 
-						<a href="<?php the_permalink(); ?>" class="dd-button small orange-light"><?php _e( 'MORE DETAILS', 'dd_string' ); ?></a>
+						<a href="<?php the_permalink(); ?>" class="dd-button small orange-light"><?php _e( 'Learn more', 'dd_string' ); ?></a>
 
 						<?php if ( $fb_link != '' ) : ?>
 							<em><?php __( 'or', 'dd_string' ); ?></em>
