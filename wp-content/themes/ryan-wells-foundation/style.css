@@ -5508,3 +5508,9 @@ text-shadow: 0 2px 2px rgba(0,0,0,.15);
 	width: 800px;
 	margin: auto;
 }
+#sidebar-top {
+	margin-bottom: 10px;
+}
+#sidxxebar-bottom {
+	margin-top: 10px;
+}
