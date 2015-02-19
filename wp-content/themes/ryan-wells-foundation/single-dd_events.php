@@ -16,7 +16,7 @@ $event_info = get_post_meta( get_the_ID(), $dd_sn . 'event_info', true );
 $event_fb = get_post_meta( get_the_ID(), $dd_sn . 'event_facebook_link', true );
 
 ?>
-		
+
 	<div class="container clearfix">
 
 		<div id="content" class="<?php echo $content_class; ?>">
@@ -24,7 +24,7 @@ $event_fb = get_post_meta( get_the_ID(), $dd_sn . 'event_facebook_link', true );
 			<?php
 
 				if (have_posts()) : while (have_posts()) : the_post();
-					
+
 					?>
 
 						<div class="event-single">
@@ -49,7 +49,7 @@ $event_fb = get_post_meta( get_the_ID(), $dd_sn . 'event_facebook_link', true );
 														<em><?php _e( 'When is it?', 'dd_string' ); ?></em>
 														<span><?php the_time('F jS, Y'); ?></span>
 													</div>
-													
+
 													<?php $parity = 'odd'; ?>
 
 													<?php if ( ! empty ( $event_info ) ) : ?>
@@ -59,7 +59,7 @@ $event_fb = get_post_meta( get_the_ID(), $dd_sn . 'event_facebook_link', true );
 																<span><?php echo $e_info['value']; ?></span>
 															</div>
 															<?php if ( $parity == 'odd' ) { $parity = 'even'; } else { $parity = 'odd'; } ?>
-														<?php endforeach; ?>	
+														<?php endforeach; ?>
 													<?php endif; ?>
 
 													<?php if ( $event_fb != '' ) : ?>
@@ -81,7 +81,7 @@ $event_fb = get_post_meta( get_the_ID(), $dd_sn . 'event_facebook_link', true );
 								</div><!-- .event-content -->
 
 								<div id="post-pagination">
-									<?php 
+									<?php
 										$args = array(
 											'before' => '',
 											'after' => '',
@@ -90,7 +90,7 @@ $event_fb = get_post_meta( get_the_ID(), $dd_sn . 'event_facebook_link', true );
 											'next_or_number' => 'number',
 											'pagelink' => '%',
 										);
-										wp_link_pages( $args ); 
+										wp_link_pages( $args );
 									?>
 								</div><!-- #post-pagination -->
 
@@ -109,7 +109,10 @@ $event_fb = get_post_meta( get_the_ID(), $dd_sn . 'event_facebook_link', true );
 
 		</div><!-- #content -->
 
-		<?php if ( empty( $layout ) || $layout == 'cs' ) { get_sidebar('events'); } ?>
+		<?php if ( empty( $layout ) || $layout == 'cs' ) {
+
+			get_sidebar('events');
+		} ?>
 
 	</div><!-- .container -->
 

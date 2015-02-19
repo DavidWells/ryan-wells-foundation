@@ -2,7 +2,7 @@
 /**
  * The Sidebar for the events.
  */
-	
+
 	global $dd_sn;
 	$event_info = get_post_meta( get_the_ID(), $dd_sn . 'event_info', true );
 	$event_fb = get_post_meta( get_the_ID(), $dd_sn . 'event_facebook_link', true );
@@ -14,7 +14,11 @@
 		<div id="sidebar-inner">
 
 			<?php if ( is_single() ) : ?>
-
+			<?php 	$id = get_the_ID();
+					$custom_sidebar = get_field('custom_sidebar_top', $id); ?>
+				<div id="sidebar-top">
+					<?php echo $custom_sidebar; ?>
+				</div>
 				<div class="widget">
 
 					<div class="widget-wrap">
@@ -27,7 +31,7 @@
 								<em><?php _e( 'When is it?', 'dd_string' ); ?></em>
 								<span><?php the_time('F jS, Y'); ?></span>
 							</div>
-							
+
 							<?php $parity = 'odd'; ?>
 
 							<?php if ( ! empty ( $event_info ) ) : ?>
@@ -37,7 +41,7 @@
 										<span><?php echo $e_info['value']; ?></span>
 									</div>
 									<?php if ( $parity == 'odd' ) { $parity = 'even'; } else { $parity = 'odd'; }  ?>
-								<?php endforeach; ?>	
+								<?php endforeach; ?>
 							<?php endif; ?>
 
 							<?php if ( $event_fb != '' ) : ?>
@@ -51,7 +55,10 @@
 					</div><!-- .widget-wrap -->
 
 				</div><!-- .widget -->
-
+				<?php $custom_sidebar_bottom = get_field('custom_sidebar_bottom', $id); ?>
+				<div id="sidebar-bottom">
+					<?php echo $custom_sidebar_bottom; ?>
+				</div>
 			<?php endif; ?>
 
 			<?php if ( ! dynamic_sidebar( 'sidebar-events' ) ) : ?>
