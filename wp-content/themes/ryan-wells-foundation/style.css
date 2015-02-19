@@ -5458,8 +5458,12 @@ width: 44% !important;
 	background-position-y: top;
 background-position-x: center;
 }
-#mailchimp-form {
+#or_mail {
+	text-align: center;
+}
+#mailchimp-form, #or_mail {
 	margin: auto;
+	width: 300px;
 }
 /* MailChimp Form Embed Code - Slim - 08/17/2011 */
 #mc_embed_signup form {display:block; position:relative; text-align:left; padding:10px 0 10px 3%}

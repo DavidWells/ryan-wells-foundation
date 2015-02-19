@@ -29,7 +29,9 @@ global $dd_paypal_url;
 						<?php if ( ot_get_option( $dd_sn . 'footer_banner_button_link' ) ) : ?>
 							<a href="<?php echo ot_get_option( $dd_sn . 'footer_banner_button_link' ); ?>" class="dd-button <?php echo ot_get_option( $dd_sn . 'footer_banner_button_color', 'green' ); ?> big"><?php echo ot_get_option( $dd_sn . 'footer_banner_button_text', 'MAKE A DONATION NOW' ); ?></a>
 						<?php endif; ?>
-
+					<div id="or_mail">
+						OR
+					</div>
 					<div id="mailchimp-form">
 					<!-- Begin MailChimp Signup Form -->
 
