@@ -5514,11 +5514,13 @@ text-shadow: 0 2px 2px rgba(0,0,0,.15);
 #or_mail {
 	margin-top: 20px !important;
 	font-style: italic;
+	font-weight: normal;
 }
 #or_mail span {
 	display: inline-block;
 	margin-top: 10px;
 	font-style: normal;
+	font-weight: bold;
 }
 #or_mail span, #or_mail {
 	width: 800px;
