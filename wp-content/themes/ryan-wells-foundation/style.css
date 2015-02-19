@@ -2083,6 +2083,13 @@
 padding-right: 10px;
 padding-left: 10px;
 				}
+				#sidebar h2 {
+					font-size: 26px;
+				}
+				#sidebar table {
+					margin-bottom: 0px;
+					margin-top: 0px;
+				}
 				.event-info-widget-when .su-button-style-default span {
 					border-top-width: 0px;
 					margin-top: 0px;

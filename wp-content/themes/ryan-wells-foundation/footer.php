@@ -248,7 +248,12 @@ global $dd_paypal_url;
 	</div><!-- #lb-overlay-sign-in -->
 
 	<?php wp_footer(); ?>
+	<script type="text/javascript">
+	jQuery(document).ready(function($) {
+   		$('p:empty').remove();
+	 });
 
+	</script>
 	<?php echo ot_get_option( $dd_sn . 'analytics', ''); ?>
 
 </body>
