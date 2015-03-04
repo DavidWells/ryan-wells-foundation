@@ -136,13 +136,15 @@
 
 			<div class="staff-member-inner">
 
-				<div class="staff-member-thumb">
+
+
+				<div class="staff-member-main">
+
+					<div class="staff-member-thumb">
 
 					<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( $dd_thumb_size ); ?></a>
 
 				</div><!-- .staff-member-thumb -->
-
-				<div class="staff-member-main">
 
 					<h2 class="staff-member-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
