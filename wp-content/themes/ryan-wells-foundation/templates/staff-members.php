@@ -104,7 +104,9 @@
 
 			<div class="staff-member-single-content">
 
-				<?php the_content(); ?>
+				<?php $content = get_the_content();
+					echo truncate_the_text($post, 200);
+				 ?>
 
 			</div><!-- .staff-member-single-content -->
 

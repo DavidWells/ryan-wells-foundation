@@ -40,6 +40,14 @@ if ( !defined( 'BP_AVATAR_FULL_HEIGHT' ) ) {
 
 require get_template_directory() . '/inc/functions.php';
 
+function truncate_the_text($text, $chars = 25) {
+    $text = $text." ";
+    $text = substr($text,0,$chars);
+    $text = substr($text,0,strrpos($text,' '));
+    $text = $text."...";
+    return $text;
+}
+
 add_action( 'after_setup_theme', 'baw_theme_setup' );
 function baw_theme_setup() {
   add_image_size( 'staff_list_size', 300, 300, false ); // Hard crop left top
