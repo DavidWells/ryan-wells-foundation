@@ -1,22 +1,24 @@
-<?php 
+<?php
 /*
 	Template Name: Staff
 */
 
-get_header(); 
+get_header();
 
 // Get Options
 $layout = get_post_meta( get_the_ID(), $dd_sn . 'layout', true );
 $post_width = get_post_meta( get_the_ID(), $dd_sn . 'post_width', true );
 $posts_per_page = get_post_meta( get_the_ID(), $dd_sn . 'posts_per_page', true );
+	$id = get_the_ID();
 
+    $title = get_the_title( $id );
 // Set vars
 $dd_count = 0;
 $dd_max_count = 4;
 
 // Set vars (with sidebar)
 if ( $layout == 'cs' ) {
-	
+
 	// In page vars
 	$content_class = 'two-thirds column ';
 	$blog_posts_class = 'staff-members-listing-style-2';
@@ -64,23 +66,23 @@ if ( $layout == 'cs' ) {
 	<div class="container clearfix">
 
 		<div id="content" class="<?php echo $content_class; ?>">
-
+			<div id=""><h1 class="page-single-title"><?php echo $title; ?></h1></div>
 			<div class="staff-members staff-members-listing <?php echo $blog_posts_class; ?> clearfix">
 
 				<?php while ( have_posts() ) : the_post(); the_content(); endwhile; ?>
-				
+
 				<?php
 
 					if( is_front_page() ) { $paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1; } else { $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1; }
 					$args = array(
-						'paged' => $paged, 
+						'paged' => $paged,
 						'post_type' => 'dd_staff',
 						'posts_per_page' => $posts_per_page
 					);
 					$dd_query = new WP_Query($args);
 
 					if ($dd_query->have_posts()) : while ($dd_query->have_posts()) : $dd_query->the_post(); $dd_count++;
-						
+
 							get_template_part( 'templates/staff-members' );
 
 					endwhile; else:
@@ -95,8 +97,8 @@ if ( $layout == 'cs' ) {
 
 			<?php
 				$num_pages = $dd_query->max_num_pages;
-				dd_theme_pagination( $num_pages ); 
-				wp_reset_postdata(); 
+				dd_theme_pagination( $num_pages );
+				wp_reset_postdata();
 			?>
 
 		</div><!-- #content -->
