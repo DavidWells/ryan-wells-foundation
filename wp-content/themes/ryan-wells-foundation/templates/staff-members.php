@@ -1,5 +1,5 @@
-<?php 
-	
+<?php
+
 	// Globals
 	global $dd_sn;
 	global $dd_post_class;
@@ -16,7 +16,7 @@
 
 	// Default - Thumb Size
 	if ( ! isset( $dd_thumb_size ) ) {
-		$dd_thumb_size = 'dd-one-fourth';	
+		$dd_thumb_size = 'dd-one-fourth';
 	}
 
 	// Default - Post Style
@@ -48,12 +48,12 @@
 	$staff_facebook = get_post_meta( get_the_ID(), $dd_sn . 'facebook', true );
 	$staff_gplus = get_post_meta( get_the_ID(), $dd_sn . 'gplus', true );
 	$staff_linkedin = get_post_meta( get_the_ID(), $dd_sn . 'linkedin', true );
-
+	$dd_thumb_size = 'staff_list_size';
 
 ?>
 
 <?php if ( is_single() ) : ?>
-		
+
 	<div <?php post_class( 'staff-member-single' ); ?>>
 
 		<div class="staff-member-single-main">
@@ -61,7 +61,7 @@
 			<h1 class="staff-member-single-title"><?php the_title(); ?></h1>
 
 			<div class="staff-member-single-meta clearfix">
-				
+
 				<?php if ( $staff_position ) : ?>
 
 					<div class="staff-member-position fl"><?php echo $staff_position; ?></div>
@@ -71,7 +71,7 @@
 				<?php if ( $staff_twitter || $staff_facebook || $staff_gplus || $staff_linkedin ) : ?>
 
 					<div class="staff-member-social fr">
-						
+
 						<?php if ( $staff_twitter ) : ?>
 
 							<a href="<?php echo $staff_twitter; ?>"><span class="icon-social-twitter"></span></a>
@@ -109,7 +109,7 @@
 			</div><!-- .staff-member-single-content -->
 
 			<div id="post-pagination">
-				<?php 
+				<?php
 					$args = array(
 						'before' => '',
 						'after' => '',
@@ -118,7 +118,7 @@
 						'next_or_number' => 'number',
 						'pagelink' => '%',
 					);
-					wp_link_pages( $args ); 
+					wp_link_pages( $args );
 				?>
 			</div><!-- #post-pagination -->
 
@@ -149,7 +149,7 @@
 						<div class="staff-member-position"><?php echo $staff_position; ?></div>
 
 					<?php endif; ?>
-						
+
 					<div class="staff-member-excerpt">
 						<?php the_excerpt(); ?>
 					</div><!-- .staff-member-excerpt -->
@@ -157,7 +157,7 @@
 					<?php if ( $staff_twitter || $staff_facebook || $staff_gplus || $staff_linkedin ) : ?>
 
 						<div class="staff-member-social">
-							
+
 							<?php if ( $staff_twitter ) : ?>
 
 								<a href="<?php echo $staff_twitter; ?>"><span class="icon-social-twitter"></span></a>
@@ -219,7 +219,7 @@
 						<?php if ( $staff_twitter || $staff_facebook || $staff_gplus || $staff_linkedin ) : ?>
 
 							<div class="staff-member-social">
-								
+
 								<?php if ( $staff_twitter ) : ?>
 
 									<a href="<?php echo $staff_twitter; ?>"><span class="icon-social-twitter"></span></a>
@@ -249,7 +249,7 @@
 						<?php endif; ?>
 
 					</div><!-- .staff-member-meta -->
-						
+
 					<div class="staff-member-excerpt">
 						<?php the_excerpt(); ?>
 					</div><!-- .staff-member-excerpt -->

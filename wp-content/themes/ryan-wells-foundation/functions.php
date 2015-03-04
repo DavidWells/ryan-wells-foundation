@@ -25,7 +25,7 @@ if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
 if ( !defined( 'BP_AVATAR_THUMB_WIDTH' ) ) {
 	define( 'BP_AVATAR_THUMB_WIDTH', 200 );
 }
- 
+
 if ( !defined( 'BP_AVATAR_THUMB_HEIGHT' ) ) {
 	define( 'BP_AVATAR_THUMB_HEIGHT', 200 );
 }
@@ -33,19 +33,24 @@ if ( !defined( 'BP_AVATAR_THUMB_HEIGHT' ) ) {
 if ( !defined( 'BP_AVATAR_FULL_WIDTH' ) ) {
 	define( 'BP_AVATAR_FULL_WIDTH', 200 );
 }
- 
+
 if ( !defined( 'BP_AVATAR_FULL_HEIGHT' ) ) {
-	define( 'BP_AVATAR_FULL_HEIGHT', 200 ); 
+	define( 'BP_AVATAR_FULL_HEIGHT', 200 );
 }
 
 require get_template_directory() . '/inc/functions.php';
+
+add_action( 'after_setup_theme', 'baw_theme_setup' );
+function baw_theme_setup() {
+  add_image_size( 'staff_list_size', 300, 300, false ); // Hard crop left top
+}
 
 /**
  * Hide the settings & documentation pages.
  */
 add_filter( 'ot_show_pages', '__return_false' );
 
-/**		 
+/**
  * Hide the "New Layout" section on the Theme Options page.
  */
 add_filter( 'ot_show_new_layout', '__return_false' );
@@ -95,7 +100,7 @@ $dd_donation_currency = ot_get_option( $dd_sn . 'paypal_currency_char', '$' );
 global $pagenow;
 if ( is_admin() && isset( $_GET['activated'] ) && $pagenow == 'themes.php' ) { add_action( 'init', 'dd_wc_image_sizes', 1 ); }
 function dd_wc_image_sizes() {
-  	
+
   	$catalog = array(
 		'width' 	=> '400',
 		'height'	=> '400',
@@ -108,7 +113,7 @@ function dd_wc_image_sizes() {
 
 add_action( 'after_setup_theme', 'dd_theme_setup' );
 if ( ! function_exists( 'dd_theme_setup' ) ) {
-	
+
 	/**
 	 * Set up theme defaults and register support for various WordPress features.
 	 */
@@ -247,7 +252,7 @@ function dd_theme_sidebars() {
 		'after_widget' => '</div></div>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
-	) );	
+	) );
 
 	register_sidebar( array(
 		'name' => __( 'BuddyPress Widgets', 'dd_string' ),
@@ -256,7 +261,7 @@ function dd_theme_sidebars() {
 		'after_widget' => '</div></div>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
-	) );	
+	) );
 
 }
 
@@ -266,14 +271,14 @@ function dd_theme_sidebars() {
 add_action( 'init', 'dd_theme_register_post_types' );
 function dd_theme_register_post_types() {
 
-	global $dd_sn;	
+	global $dd_sn;
 
 	$causes_slug = ot_get_option( $dd_sn . 'slug_causes', 'cause-view' );
 	$causes_tax_slug = ot_get_option( $dd_sn . 'slug_causes_tax', 'dd_causes_cats' );
 	$events_slug = ot_get_option( $dd_sn . 'slug_events', 'event-view' );
 	$staff_slug = ot_get_option( $dd_sn . 'slug_staff', 'staff-view' );
 	$staff_tax_slug = ot_get_option( $dd_sn . 'slug_staff_tax', 'dd_staff_cats' );
-	
+
 	register_post_type( 'dd_causes', array(
 		'labels' => array(
 			'name' => __( 'Causes', 'dd_string' ),
@@ -366,7 +371,7 @@ function dd_theme_register_post_types() {
  */
 add_action( 'wp_enqueue_scripts', 'dd_theme_scripts' );
 function dd_theme_scripts() {
-	
+
 	/* CSS */
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 	wp_enqueue_style( 'fonts', get_template_directory_uri() . '/css/font.css' );
@@ -396,7 +401,7 @@ function dd_theme_scripts() {
 /**
  * Enqueue scripts and styles in the admin
  */
-function dd_theme_scripts_admin( $hook ) {	
+function dd_theme_scripts_admin( $hook ) {
 
 	if ( $hook == 'post.php' || $hook = 'post-new.php' ) {
 		wp_enqueue_script( 'theme-options-js', get_template_directory_uri() . '/inc/admin/js/admin.js' );
@@ -415,7 +420,7 @@ add_action( 'admin_enqueue_scripts', 'dd_theme_scripts_admin' );
 add_action( 'wp_footer', 'dd_custom_js_code');
 function dd_custom_js_code() {
 
-	global $dd_sn;	
+	global $dd_sn;
 
 	if ( ot_get_option( $dd_sn . 'code_js' ) ) {
 		echo '<script>' . ot_get_option( $dd_sn . 'code_js' ) . '</script>';
@@ -427,7 +432,7 @@ add_action( 'wp_head', 'dd_custom_css_code' );
 function dd_custom_css_code() {
 
 	global $dd_sn;
-    
+
 	if ( ot_get_option( $dd_sn . 'code_css' ) ) {
 		echo '<style>' . ot_get_option( $dd_sn . 'code_css' ) . '</style>';
 	}
@@ -438,15 +443,15 @@ function dd_custom_css_code() {
  * Get id of a post by using different methods
  */
 function dd_get_post_id($by, $needle){
-		
+
 	global $wpdb;
 
 	$to_return = '';
-	
+
 	if( $by == 'name' ) { $to_return = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '".$needle."'"); }
-	
+
 	if( $by == 'title' ) { $to_return = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_title = '".$needle."'"); }
-	
+
 	if( $by == 'template' ) { $pages = $wpdb->get_row("SELECT post_id FROM $wpdb->postmeta WHERE meta_key='_wp_page_template' AND meta_value='".$needle."'", ARRAY_A); $to_return = $pages['post_id']; }
 
 	if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
@@ -456,7 +461,7 @@ function dd_get_post_id($by, $needle){
 	}
 
 	return $to_return;
-	
+
 }
 
 /**
@@ -473,7 +478,7 @@ function dd_events_calendar_ajx( $atts ) {
 
 	$response['output'] = dd_get_calendar( array( 'dd_events'), false, false, $month, $year );
 
-	$response_json = json_encode( $response );	
+	$response_json = json_encode( $response );
 
 	header( "Content-Type: application/json" );
 	echo $response_json;
@@ -493,7 +498,7 @@ if ( ! function_exists( 'dd_slider' ) ) {
 		global $dd_donation_currency;
 
 		$slider = ot_get_option( $dd_sn . 'slider' );
-			
+
 		if ( ! empty ( $slider ) ) :
 
 			?>
@@ -511,13 +516,13 @@ if ( ! function_exists( 'dd_slider' ) ) {
 									<li class="slide">
 
 										<?php if ( $slide['type'] == 'custom' ) : ?>
-										
+
 											<img class="slide-img" src="<?php $slide_img = wp_get_attachment_image_src( dd_get_image_id( $slide['image'] ), 'dd-slider' ); echo $slide_img[0]; ?>" alt="<?php echo esc_attr($slide['title']); ?>" />
 
 											<?php if (  ! empty( $slide['title'] ) ||  ! empty( $slide['description'] ) ||  ! empty( $slide['link'] ) ) : ?>
 
 												<div class="slide-info">
-													
+
 													<?php if ( ot_get_option( $dd_sn . 'multicol_colors', '' ) != '' ) : ?>
 
 														<?php $header_colors = ot_get_option( $dd_sn . 'multicol_colors' ); ?>
@@ -533,15 +538,15 @@ if ( ! function_exists( 'dd_slider' ) ) {
 													<?php endif; ?>
 
 													<div class="slide-info-inner clearfix">
-														
+
 														<?php if ( ! empty( $slide['title'] ) ) : ?>
 															<div class="slide-title"><?php echo $slide['title']; ?></div>
 														<?php endif; ?>
-														
+
 														<?php if ( ! empty( $slide['description'] ) ) : ?>
 															<div class="slide-description"><?php echo $slide['description']; ?></div>
 														<?php endif; ?>
-														
+
 														<?php if ( ! empty( $slide['link'] ) ) : ?>
 															<a href="<?php echo $slide['link']; ?>" class="dd-button orange slide-link"><?php _e( 'MORE INFO', 'dd_string' ); ?></a>
 														<?php endif; ?>
@@ -557,10 +562,10 @@ if ( ! function_exists( 'dd_slider' ) ) {
 
 										<?php else : ?>
 
-											<?php 
+											<?php
 												if ( $slide['type'] == 'blog' ) {
 
-													$post_id = $slide['blog_post']; 
+													$post_id = $slide['blog_post'];
 													$more_details_link = get_permalink( $slide['blog_post'] );
 
 												} elseif ( $slide['type'] == 'event' ) {
@@ -570,7 +575,7 @@ if ( ! function_exists( 'dd_slider' ) ) {
 													$more_details_link = get_permalink( $slide['event'] );
 
 												} elseif ( $slide['type'] == 'cause' ) {
-													
+
 													$post_id = $slide['cause'];
 
 													/**
@@ -632,7 +637,7 @@ if ( ! function_exists( 'dd_slider' ) ) {
 											<?php echo get_the_post_thumbnail( $post_id, 'dd-slider' ); ?>
 
 											<div class="slide-info">
-												
+
 												<?php if ( ot_get_option( $dd_sn . 'multicol_colors', '' ) != '' ) : ?>
 
 													<?php $header_colors = ot_get_option( $dd_sn . 'multicol_colors' ); ?>
@@ -648,7 +653,7 @@ if ( ! function_exists( 'dd_slider' ) ) {
 												<?php endif; ?>
 
 												<div class="slide-info-inner">
-													
+
 													<div class="slide-title"><a href="<?php echo $more_details_link; ?>"><?php echo get_the_title( $post_id ); ?></a></div>
 
 												</div><!-- .slide-info-inner -->
@@ -658,7 +663,7 @@ if ( ! function_exists( 'dd_slider' ) ) {
 													<div class="slide-info-extra">
 
 														<div class="cause-info-content clearfix">
-						
+
 															<div class="fl cause-info-donated">
 																<span><?php echo $dd_donation_currency . $donation_current; ?></span> <?php _e ( 'Donated', 'dd_string' ); ?>
 															</div><!-- .cause-info-donated -->
@@ -703,7 +708,7 @@ if ( ! function_exists( 'dd_slider' ) ) {
 													<div class="slide-info-extra">
 
 														<a href="<?php echo get_permalink( $post_id ); ?>" class="dd-button small orange-light"><?php _e( 'MORE DETAILS', 'dd_string' ); ?></a>
-													
+
 														<?php if ( $fb_link != '' ) : ?>
 															<span class="or">or</span>
 															<a href="<?php echo $fb_link; ?>" target="_blank" class="dd-button small blue-light"><?php _e( 'VIEW FACEBOOK PAGE', 'dd_string' ); ?></a>
@@ -716,7 +721,7 @@ if ( ! function_exists( 'dd_slider' ) ) {
 											</div><!-- .slide-info -->
 
 										<?php endif; ?>
-											
+
 										<a href="<?php echo $more_details_link; ?>" class="slide-link-mobile"></a>
 
 									</li>
@@ -737,11 +742,11 @@ if ( ! function_exists( 'dd_slider' ) ) {
 											<?php if ( $slide['type'] == 'custom' ) : ?>
 
 												<div class="slide-inner">
-													
+
 													<div class="slider-nav-thumb">
 														<img src="<?php $image_id = dd_get_image_id( $slide['image'] ); $img_array = wp_get_attachment_image_src( $image_id, 'dd-tiny' ); echo $img_array[0]; ?>">
 													</div><!-- .slider-nav-thumb -->
-													
+
 													<div class="slider-nav-info">
 														<span class="slider-nav-title"><?php echo $slide['title']; ?></span>
 													</div><!-- .slider-nav-info -->
@@ -750,13 +755,13 @@ if ( ! function_exists( 'dd_slider' ) ) {
 
 											<?php else : ?>
 
-												<?php 
+												<?php
 													if ( $slide['type'] == 'blog' ) {
-														$post_id = $slide['blog_post']; 
+														$post_id = $slide['blog_post'];
 													} elseif ( $slide['type'] == 'event' ) {
 														$post_id = $slide['event'];
 													} elseif ( $slide['type'] == 'cause' ) {
-														
+
 														$post_id = $slide['cause'];
 
 														/**
@@ -869,7 +874,7 @@ if ( ! function_exists( 'dd_home_section_causes' ) ) {
 				$args = array(
 					'post_type' => 'dd_causes',
 					'posts_per_page' => $atts['amount']
-				);	
+				);
 
 			} else {
 
@@ -883,7 +888,7 @@ if ( ! function_exists( 'dd_home_section_causes' ) ) {
 							'terms' => $atts['category']
 						)
 					)
-				);	
+				);
 
 			}
 
@@ -931,7 +936,7 @@ if ( ! function_exists( 'dd_home_section_causes' ) ) {
 		}
 
 		$dd_query = new WP_Query( $args );
-		
+
 		if ( $dd_query->have_posts() ) : ?>
 
 			<div class="causes-wrapper home-section <?php echo $wrapper_class; ?>">
@@ -971,8 +976,8 @@ if ( ! function_exists( 'dd_home_section_causes' ) ) {
 										 * Translation Sync
 										 */
 
-										$cause_id = get_the_ID();	
-										
+										$cause_id = get_the_ID();
+
 										if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
 
 											global $dd_lang_curr;
@@ -1049,7 +1054,7 @@ if ( ! function_exists( 'dd_home_section_causes' ) ) {
 												<div class="cause-meta clearfix">
 
 													<h2 class="cause-title"><a href="<?php echo $more_details_link; ?>"><?php the_title(); ?></a></h2>
-													
+
 													<div class="cause-excerpt">
 														<?php the_excerpt(); ?>
 													</div><!-- .cause-excerpt -->
@@ -1059,11 +1064,11 @@ if ( ! function_exists( 'dd_home_section_causes' ) ) {
 											</div><!-- .cause-main -->
 
 											<div class="cause-info">
-												
+
 												<div class="cause-info-arrow"></div>
 
 												<div class="cause-info-content clearfix">
-													
+
 													<div class="fl cause-info-donated">
 														<span><?php echo $dd_donation_currency . $donation_current; ?></span> <?php _e( 'Donated', 'dd_string' ); ?>
 													</div><!-- .cause-info-donated -->
@@ -1105,7 +1110,7 @@ if ( ! function_exists( 'dd_home_section_causes' ) ) {
 						</div><!-- .flexslider -->
 
 					</div><!-- .causes -->
-					
+
 				</div><!-- .container -->
 
 			</div><!-- .causes-wrapper -->
@@ -1123,7 +1128,7 @@ if ( ! function_exists( 'dd_home_section_blog' ) ) {
 	 *
 	 * Output contents for the section on the homepage.
 	 */
-	function dd_home_section_blog( $atts ) {		
+	function dd_home_section_blog( $atts ) {
 
 		global $dd_sn;
 
@@ -1156,7 +1161,7 @@ if ( ! function_exists( 'dd_home_section_blog' ) ) {
 		}
 
 		$dd_query = new WP_Query( $args );
-		
+
 		if ( $dd_query->have_posts() ) : ?>
 
 			<div class="blog-posts-wrapper home-section <?php echo $wrapper_class; ?>">
@@ -1220,7 +1225,7 @@ if ( ! function_exists( 'dd_home_section_blog' ) ) {
 												<h2 class="blog-post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
 												<div class="blog-post-date"><?php the_time( get_option( 'date_format' ) ); ?></div>
-													
+
 												<div class="blog-post-excerpt">
 													<?php the_excerpt(); ?>
 												</div><!-- .blog-post-excerpt -->
@@ -1250,7 +1255,7 @@ if ( ! function_exists( 'dd_home_section_blog' ) ) {
 				</div><!-- .container -->
 
 			</div><!-- .blog-posts-wrapper -->
-			
+
 		<?php endif; wp_reset_postdata();
 
 	}
@@ -1264,7 +1269,7 @@ if ( ! function_exists( 'dd_home_section_staff' ) ) {
 	 *
 	 * Output contents for the section on the homepage.
 	 */
-	function dd_home_section_staff( $atts ) {		
+	function dd_home_section_staff( $atts ) {
 
 		global $dd_sn;
 
@@ -1283,7 +1288,7 @@ if ( ! function_exists( 'dd_home_section_staff' ) ) {
 			'suppress_filter' => 0
 		);
 		$dd_query = new WP_Query( $args );
-		
+
 		if ( $dd_query->have_posts() ) : ?>
 
 			<div class="staff-members-wrapper home-section <?php echo $wrapper_class; ?>">
@@ -1344,7 +1349,7 @@ if ( ! function_exists( 'dd_home_section_staff' ) ) {
 												<div class="staff-member-position"><?php echo $staff_position; ?></div>
 
 											<?php endif; ?>
-												
+
 											<div class="staff-member-excerpt">
 												<?php the_excerpt(); ?>
 											</div><!-- .staff-member-excerpt -->
@@ -1352,7 +1357,7 @@ if ( ! function_exists( 'dd_home_section_staff' ) ) {
 											<?php if ( $staff_twitter || $staff_facebook || $staff_gplus || $staff_linkedin ) : ?>
 
 												<div class="staff-member-social">
-													
+
 													<?php if ( $staff_twitter ) : ?>
 
 														<a href="<?php echo $staff_twitter; ?>"><span class="icon-social-twitter"></span></a>
@@ -1400,7 +1405,7 @@ if ( ! function_exists( 'dd_home_section_staff' ) ) {
 				</div><!-- .container -->
 
 			</div><!-- .staff-members-wrapper -->
-			
+
 		<?php endif; wp_reset_postdata();
 
 	}
@@ -1434,7 +1439,7 @@ if ( ! function_exists( 'dd_home_section_events' ) ) {
 			'order' => 'ASC',
 		);
 		$dd_query = new WP_Query( $args );
-		
+
 		if ( $dd_query->have_posts() ) : $start_at = true; ?>
 
 			<div class="events-wrapper home-section <?php echo $wrapper_class; ?>">
@@ -1481,7 +1486,7 @@ if ( ! function_exists( 'dd_home_section_events' ) ) {
 										$start_at_class = '';
 
 										if ( $start_at && get_post_status( get_the_ID() ) == 'future' ) {
-											
+
 											$start_at = false;
 											$start_at_class = 'start-at';
 
@@ -1503,7 +1508,7 @@ if ( ! function_exists( 'dd_home_section_events' ) ) {
 											<div class="event-main">
 
 												<h2 class="event-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-													
+
 												<div class="event-excerpt">
 													<?php the_excerpt(); ?>
 												</div><!-- .event-excerpt -->
@@ -1511,9 +1516,9 @@ if ( ! function_exists( 'dd_home_section_events' ) ) {
 											</div><!-- .event-main -->
 
 											<div class="event-info">
-												
+
 												<a href="<?php the_permalink(); ?>" class="dd-button small orange-light"><?php _e( 'MORE DETAILS', 'dd_string' ); ?></a>
-												
+
 												<?php if ( $fb_link != '' ) : ?>
 													<em><?php _e( 'or', 'dd_string' ); ?></em>
 													<a href="<?php echo $fb_link; ?>" target="_blank" class="dd-button small blue-light"><?php _e( 'VIEW FACEBOOK PAGE', 'dd_string' ); ?></a>
@@ -1536,7 +1541,7 @@ if ( ! function_exists( 'dd_home_section_events' ) ) {
 				</div><!-- .container -->
 
 			</div><!-- .events-wrapper -->
-			
+
 		<?php endif; wp_reset_postdata();
 
 	}
@@ -1570,7 +1575,7 @@ if ( ! function_exists( 'dd_home_section_events_no_cal' ) ) {
 			'order' => 'ASC',
 		);
 		$dd_query = new WP_Query( $args );
-		
+
 		if ( $dd_query->have_posts() ) : $start_at = true; ?>
 
 			<div class="events-no-cal-wrapper home-section <?php echo $wrapper_class; ?>">
@@ -1622,7 +1627,7 @@ if ( ! function_exists( 'dd_home_section_events_no_cal' ) ) {
 										$start_at_class = '';
 
 										if ( $start_at && get_post_status( get_the_ID() ) == 'future' ) {
-											
+
 											$start_at = false;
 											$start_at_class = 'start-at';
 
@@ -1644,7 +1649,7 @@ if ( ! function_exists( 'dd_home_section_events_no_cal' ) ) {
 											<div class="event-main">
 
 												<h2 class="event-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-													
+
 												<div class="event-excerpt">
 													<?php the_excerpt(); ?>
 												</div><!-- .event-excerpt -->
@@ -1652,9 +1657,9 @@ if ( ! function_exists( 'dd_home_section_events_no_cal' ) ) {
 											</div><!-- .event-main -->
 
 											<div class="event-info">
-												
+
 												<a href="<?php the_permalink(); ?>" class="dd-button small orange-light"><?php _e( 'MORE DETAILS', 'dd_string' ); ?></a>
-												
+
 												<?php if ( $fb_link != '' ) : ?>
 													<em><?php _e( 'or', 'dd_string' ); ?></em>
 													<a href="<?php echo $fb_link; ?>" target="_blank" class="dd-button small blue-light"><?php _e( 'VIEW FACEBOOK PAGE', 'dd_string' ); ?></a>
@@ -1677,7 +1682,7 @@ if ( ! function_exists( 'dd_home_section_events_no_cal' ) ) {
 				</div><!-- .container -->
 
 			</div><!-- .events-wrapper -->
-			
+
 		<?php endif; wp_reset_postdata();
 
 	}
@@ -1696,7 +1701,7 @@ if ( ! function_exists( 'dd_home_section_products' ) ) {
 		if ( class_exists( 'woocommerce' ) ) :
 
 			global $dd_sn;
-			global $woocommerce; 
+			global $woocommerce;
 
 			$woo_cart_url = $woocommerce->cart->get_cart_url();
 
@@ -1714,7 +1719,7 @@ if ( ! function_exists( 'dd_home_section_products' ) ) {
 				'posts_per_page' => $atts['amount']
 			);
 			$dd_query = new WP_Query( $args );
-			
+
 			if ( $dd_query->have_posts() ) : $carousel_content = ''; ?>
 
 				<div class="products-wrapper home-section <?php echo $wrapper_class; ?>">
@@ -1738,8 +1743,8 @@ if ( ! function_exists( 'dd_home_section_products' ) ) {
 
 									<?php while ( $dd_query->have_posts() ) : $dd_query->the_post(); global $product;  ?>
 
-										<?php 
-											$product_bg_color = get_post_meta( get_the_ID(), $dd_sn . 'product_bg', true ); 
+										<?php
+											$product_bg_color = get_post_meta( get_the_ID(), $dd_sn . 'product_bg', true );
 											if ( ! $product_bg_color ) {
 												$product_bg_color = 'default';
 											}
@@ -1760,11 +1765,11 @@ if ( ! function_exists( 'dd_home_section_products' ) ) {
 												<a href="<?php the_permalink(); ?>" class="product-slide-title"><?php the_title(); ?></a>
 
 												<div class="product-slide-meta clearfix">
-													
+
 													<?php if ( $product->get_price_html() !== '' ) : ?>
 														<a href="<?php the_permalink(); ?>" class="product-slide-price"><?php echo $product->get_price_html(); ?></a>
 													<?php endif; ?>
-													
+
 													<div class="product-slide-excerpt"><?php the_excerpt(); ?></div>
 
 												</div><!-- .product-slide-meta -->
@@ -1827,7 +1832,7 @@ if ( ! function_exists( 'dd_home_section_products' ) ) {
 
 if ( ! function_exists( 'dd_home_section_tabs' ) ) {
 
-	function dd_home_section_tabs( $atts ) { 
+	function dd_home_section_tabs( $atts ) {
 
 		global $dd_sn;
 
@@ -1942,10 +1947,10 @@ if ( ! function_exists( 'dd_home_section_sponsors' ) ) {
 		$args = array(
 			'post_type' => 'dd_sponsors',
 			'posts_per_page' => $atts['amount']
-		);	
-		
+		);
+
 		$dd_query = new WP_Query( $args );
-		
+
 		if ( $dd_query->have_posts() ) : ?>
 
 			<div class="sponsors-wrapper home-section <?php echo $wrapper_class; ?>">
@@ -2021,7 +2026,7 @@ if ( ! function_exists( 'dd_home_section_sponsors' ) ) {
 						</div><!-- .flexslider -->
 
 					</div><!-- .sponsors -->
-					
+
 				</div><!-- .container -->
 
 			</div><!-- .sponsors-wrapper -->
@@ -2108,7 +2113,7 @@ function dd_show_future_events( $posts ) {
 }
 
 function dd_additional_cause_meta( $cause_id ) {
-    
+
 	global $dd_sn;
 
 	// Verify post is not a revision
@@ -2123,7 +2128,7 @@ function dd_additional_cause_meta( $cause_id ) {
 			$donation_percentage = 0;
 			$donation_current = 0;
 		} else {
-			
+
 			if ( $donation_goal == '' ) {
 				$donation_percentage = 0;
 			} else {
@@ -2153,7 +2158,7 @@ function dd_additional_cause_meta( $cause_id ) {
 	}
 
 }
-add_action('save_post', 'dd_additional_cause_meta');		
+add_action('save_post', 'dd_additional_cause_meta');
 
 /**
  * Google Fonts
