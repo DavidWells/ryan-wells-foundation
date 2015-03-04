@@ -50,7 +50,7 @@ function truncate_the_text($text, $chars = 25) {
 
 add_action( 'after_setup_theme', 'baw_theme_setup' );
 function baw_theme_setup() {
-  add_image_size( 'staff_list_size', 300, 300, false ); // Hard crop left top
+  add_image_size( 'staff_list_size', 400, 400, false ); // Hard crop left top
 }
 
 /**
