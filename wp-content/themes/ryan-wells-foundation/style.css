@@ -23,6 +23,9 @@
 height: auto !important;
 margin: auto;
 }
+iframe {
+	max-width: 100%;
+}
 /**
  * #2 Typography & Elements
  */
