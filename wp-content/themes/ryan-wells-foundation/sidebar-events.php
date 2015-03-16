@@ -30,10 +30,12 @@
 									$now = new DateTime();
 
 									if($date < $now) {
-									    echo 'date is in the past';
+									    $text = 'When was it?';
+									} else {
+										$text = 'When is it?';
 									}
 									?>
-								<em><?php _e( 'When is it?', 'dd_string' ); ?></em>
+								<em><?php echo $text; ?></em>
 								<span><?php the_time('F jS, Y'); ?></span>
 								<?php echo $custom_sidebar; ?>
 							</div>
