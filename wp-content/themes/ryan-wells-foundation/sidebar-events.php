@@ -26,6 +26,13 @@
 							<?php dd_multicol_colors(); ?>
 
 							<div class="event-info-widget-when">
+								<?php $date = new DateTime(get_the_time());
+									$now = new DateTime();
+
+									if($date < $now) {
+									    echo 'date is in the past';
+									}
+									?>
 								<em><?php _e( 'When is it?', 'dd_string' ); ?></em>
 								<span><?php the_time('F jS, Y'); ?></span>
 								<?php echo $custom_sidebar; ?>
