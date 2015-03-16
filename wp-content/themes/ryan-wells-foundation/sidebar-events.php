@@ -26,7 +26,7 @@
 							<?php dd_multicol_colors(); ?>
 
 							<div class="event-info-widget-when">
-								<?php $date = new DateTime(get_the_time());
+								<?php $date = new DateTime(get_the_time('F jS, Y', $id));
 									$now = new DateTime();
 
 									if($date < $now) {
