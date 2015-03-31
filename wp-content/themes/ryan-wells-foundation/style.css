@@ -26,6 +26,69 @@ margin: auto;
 iframe {
 	max-width: 100%;
 }
+
+/* ==========================================================================
+    timeline
+========================================================================== */
+
+.timeline{
+    width:820px;
+    padding:0px 0px;
+    margin: auto;
+    overflow:hidden;
+    background:url(images/timeline_line.png) center repeat-y;
+}
+.timeline .timeline_item{
+    width:445px;
+    min-height:80px;
+}
+.timeline .timeline_item .timeline_item_date{
+    width:70px;
+    min-height:1em;
+}
+.timeline .timeline_item .timeline_item_date .timeline_item_date_inner{
+    background:#febd21;
+    padding:9px 20px;
+    border-radius: 20px;
+    text-align: center;
+    font-size:12px;
+    color:black;
+    font-weight: bold;
+    line-height: 1em;
+}
+.timeline .timeline_item .timeline_item_date .timeline_item_date_inner.multiline{
+    line-height:1.5em;
+}
+
+.timeline .timeline_item .timeline_item_content{
+    padding:2px 20px;
+    width:300px;
+    box-sizing:border-box;
+}
+.timeline .timeline_item .timeline_item_content p{
+    color:#949494;
+    line-height:1.3em;
+    padding-bottom:15px;
+}
+.timeline .timeline_item .timeline_item_content .timeline_item_title{
+    line-height:1.2em;
+    font-weight: bold;
+    font-size:16px;
+}
+.timeline .timeline_item.item_right{
+    float:right;
+}
+.timeline .timeline_item.item_left{
+    float:left;
+    text-align: right;
+}
+.timeline .timeline_item.item_right >*{
+    float:left;
+}
+.timeline .timeline_item.item_left >*{
+    float:right;
+}
+
 /**
  * #2 Typography & Elements
  */
@@ -2131,7 +2194,7 @@ padding-left: 10px;
 
 				.event-info-widget-info {
 					background: #415769;
-					padding: 25px 35px;
+					padding: 25px 15px;
 				}
 
 				.event-info-widget-info.even {
