@@ -23,7 +23,7 @@ class DD_Events_Widget extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
-		
+
 		global $dd_sn;
 		global $donation_currency;
 
@@ -40,7 +40,7 @@ class DD_Events_Widget extends WP_Widget {
 		/* Start - Widget Content */
 
 		$args = array(
-			'paged' => 1,  
+			'paged' => 1,
 			'post_type' => 'dd_events',
 			'posts_per_page' => $amount,
 			'post_status' => array( 'future' ),
@@ -77,17 +77,18 @@ class DD_Events_Widget extends WP_Widget {
 									<div class="event-main">
 
 										<h2 class="event-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-											
+
 										<div class="event-excerpt">
-											<?php the_excerpt(); ?>
+											<?php $your_post_object = get_the_ID();
+   												echo pippin_excerpt_by_id($your_post_object); ?>
 										</div><!-- .event-excerpt -->
 
 									</div><!-- .event-main -->
 
 									<div class="event-info">
-										
+
 										<a href="<?php the_permalink(); ?>" class="dd-button small orange-light"><?php _e( 'MORE DETAILS', 'dd_string' ); ?></a>
-										
+
 										<?php if ( $fb_link != '' ) : ?>
 											<em>or</em>
 											<a href="<?php echo $fb_link; ?>" target="_blank" class="dd-button small blue-light"><?php _e( 'VIEW FACEBOOK PAGE', 'dd_string' ); ?></a>
@@ -135,7 +136,7 @@ class DD_Events_Widget extends WP_Widget {
 	 * @return array Updated safe values to be saved.
 	 */
 	public function update( $new_instance, $old_instance ) {
-		
+
 		$instance = array();
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['amount'] = strip_tags( $new_instance['amount'] );
@@ -159,15 +160,15 @@ class DD_Events_Widget extends WP_Widget {
 
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>">Title</label> 
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>">Title</label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'amount' ); ?>">Amount</label> 
+			<label for="<?php echo $this->get_field_id( 'amount' ); ?>">Amount</label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'amount' ); ?>" name="<?php echo $this->get_field_name( 'amount' ); ?>" type="text" value="<?php echo esc_attr( $amount ); ?>" />
 		</p>
-		
-		<?php 
+
+		<?php
 
 	}
 

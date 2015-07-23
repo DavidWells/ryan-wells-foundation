@@ -14,14 +14,14 @@ function ddHideShowOptions(){
 	postWidth.hide();
 
 	if ( currTemplate == 'template-blog.php' || currTemplate == 'template-dd_staff.php' || currTemplate == 'template-dd_gallery.php' || currTemplate == 'template-dd_events.php' || currTemplate == 'template-dd_causes.php' || currTemplate == 'template-dd_sponsors.php' ) {
-		
+
 		layout.show();
 		postsPerPage.show();
 
 		if ( layoutVal == 'fc' )
 			postWidth.show();
 
-	} else if ( currTemplate == undefined || currTemplate == 'default' ) { 
+	} else {
 
 		layout.show();
 
@@ -42,7 +42,7 @@ function ddHideShowSliderOptions(){
 		imageSec = jQuery('*[id*="slider_image"]', _this).closest('.format-settings');
 		descriptionSec = jQuery('*[id*="slider_description"]', _this).closest('.format-settings');
 		linkSec = jQuery('*[id*="slider_link"]', _this).closest('.format-settings');
-		
+
 		eventSec = jQuery('*[id*="slider_event"]', _this).closest('.format-settings');
 		blogSec = jQuery('*[id*="slider_blog_post"]', _this).closest('.format-settings');
 		causeSec = jQuery('*[id*="slider_cause"]', _this).closest('.format-settings');
@@ -63,7 +63,7 @@ function ddHideShowSliderOptions(){
 
 			blogSec.show();
 
-		} else if ( 'event' == typeVal ) { 
+		} else if ( 'event' == typeVal ) {
 
 			eventSec.show();
 

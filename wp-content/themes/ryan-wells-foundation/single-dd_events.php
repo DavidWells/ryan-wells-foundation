@@ -6,15 +6,15 @@
 get_header();
 
 $content_class = '';
-$layout = get_post_meta( get_the_ID(), $dd_sn . 'layout', true );
+$lay = get_post_meta( get_the_ID(), $dd_sn . 'layout', true );
 
-if ( empty( $layout ) || $layout == 'cs' ) {
+if ( empty( $lay ) || $lay == 'cs' ) {
 	$content_class = 'two-thirds column';
 }
 
 $event_info = get_post_meta( get_the_ID(), $dd_sn . 'event_info', true );
 $event_fb = get_post_meta( get_the_ID(), $dd_sn . 'event_facebook_link', true );
-
+$blocks = get_field( 'page_flexible_content');
 ?>
 
 	<div class="container clearfix">
@@ -35,7 +35,7 @@ $event_fb = get_post_meta( get_the_ID(), $dd_sn . 'event_facebook_link', true );
 
 								<div class="event-content clearfix">
 
-									<?php if ( $layout == 'fc' ) : ?>
+									<?php if ( $lay == 'fc' ) : ?>
 
 										<div class="widget one-third column">
 
@@ -76,6 +76,22 @@ $event_fb = get_post_meta( get_the_ID(), $dd_sn . 'event_facebook_link', true );
 
 									<?php endif; ?>
 
+									<?php if ( $blocks ) {
+
+										foreach( $blocks as $layout) {
+											$section = $layout['acf_fc_layout'];
+
+											if ( $section == 'header_area' ) {
+												// The main heading section
+												crb_heading_section( $layout );
+											} else {
+
+												include( locate_template( 'fragments/' . $section . '.php' ) );
+
+											}
+										}
+									} ?>
+
 									<?php the_content(); ?>
 
 								</div><!-- .event-content -->
@@ -109,7 +125,7 @@ $event_fb = get_post_meta( get_the_ID(), $dd_sn . 'event_facebook_link', true );
 
 		</div><!-- #content -->
 
-		<?php if ( empty( $layout ) || $layout == 'cs' ) {
+		<?php if ( empty( $lay ) || $lay == 'cs' ) {
 
 			get_sidebar('events');
 		} ?>

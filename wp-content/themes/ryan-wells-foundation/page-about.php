@@ -31,6 +31,10 @@ if ( $layout == 'cs' ) { $content_class = 'two-thirds column'; }
 		<h1 class="page-single-title"><?php the_title(); ?></h1>
 
 		<div class="page-post-content">
+
+			<?php the_content(); ?>
+
+
 		<div class="main">
 
 
@@ -46,10 +50,10 @@ if ( $layout == 'cs' ) { $content_class = 'two-thirds column'; }
 						<div class="content">
 							<?php foreach($vertical_sections as $section) :
 
-								$sanitized_side_title = sanitize_title_with_dashes($section['side_title']);  ?>
-								<div class="section" id="<?php echo $id_safe_prefix . $sanitized_side_title; ?>">
+							 ?>
+								<div class="section type-<?php echo $section['acf_fc_layout'];?>">
 									<?php if(!empty($section['section_title'])) : ?>
-										<h2 class="entry-title"><?php echo $section['section_title']; ?></h2>
+										<h2 class="entry-title timeline-title"><?php echo $section['section_title']; ?></h2>
 									<?php endif;
 
 									if($section['acf_fc_layout'] == 'content') :
@@ -240,11 +244,7 @@ if ( $layout == 'cs' ) { $content_class = 'two-thirds column'; }
 														</h5>
 														<p><?php echo $timeline_item['description'] ?></p>
 													</div>
-													<div class="timeline_item_image">
-														<?php if ($timeline_item['image']): ?>
-															<?php echo wp_get_attachment_image($timeline_item['image']['id'], 'crb_48_50', false); ?>
-														<?php endif ?>
-													</div>
+
 												</div>
 											<?php endforeach ?>
 

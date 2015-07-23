@@ -6,15 +6,16 @@
 get_header();
 
 // Layout
-$layout = get_post_meta( get_the_ID(), $dd_sn . 'layout', true );
-if ( empty ( $layout ) ) { $layout = 'cs'; }
+$lay = get_post_meta( get_the_ID(), $dd_sn . 'layout', true );
+$blocks = get_field( 'page_flexible_content');
+if ( empty ( $lay ) ) { $lay = 'cs'; }
 
 // Content Class
 $content_class = '';
-if ( $layout == 'cs' ) { $content_class = 'two-thirds column'; }
+if ( $lay == 'cs' ) { $content_class = 'two-thirds column'; }
 
 ?>
-		
+
 	<div class="container clearfix">
 
 		<div id="content" class="<?php echo $content_class; ?>">
@@ -22,16 +23,44 @@ if ( $layout == 'cs' ) { $content_class = 'two-thirds column'; }
 			<?php
 
 				if (have_posts()) : while (have_posts()) : the_post();
-						
+
 					get_template_part( 'templates/page', '' );
 
 				endwhile; endif;
 
 			?>
 
+			<?php if ( $blocks ) {
+
+				foreach( $blocks as $layout) {
+					$section = $layout['acf_fc_layout'];
+
+					if ( $section == 'header_area' ) {
+						// The main heading section
+						crb_heading_section( $layout );
+					} else {
+
+						include( locate_template( 'fragments/' . $section . '.php' ) );
+
+					}
+				}
+			} ?>
+
+			<?php $vertical_sections = get_field('vertical_sections', $page_id, 'complex');
+			if(!empty($vertical_sections)) : ?>
+				<div class="main">
+
+					<div class="shell">
+
+						<?php include( locate_template( 'fragments/vert.php' ) ); ?>
+
+					</div><!-- /.shell -->
+				</div><!-- /.main -->
+			<?php endif; ?>
+
 		</div>
 
-		<?php if ( $layout == 'cs' ) { get_sidebar( 'page' ); } ?>
+		<?php if ( $lay == 'cs' ) { get_sidebar( 'page' ); } ?>
 
 	</div><!-- .container -->
 

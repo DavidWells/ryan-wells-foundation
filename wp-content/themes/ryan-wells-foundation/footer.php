@@ -251,6 +251,14 @@ global $dd_paypal_url;
 	<script type="text/javascript">
 	jQuery(document).ready(function($) {
    		$('p:empty').remove();
+
+   		function externalLinks() {
+   		  for(var c = document.getElementsByTagName("a"), a = 0;a < c.length;a++) {
+   		    var b = c[a];
+   		    b.getAttribute("href") && b.hostname !== location.hostname && (b.target = "_blank")
+   		  }
+   		}
+   		externalLinks();
 	 });
 
 	</script>

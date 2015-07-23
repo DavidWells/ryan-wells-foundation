@@ -105,7 +105,11 @@
 			<div class="staff-member-single-content">
 
 				<?php $content = get_the_content();
-					echo truncate_the_text($content, 200);
+					if(is_singular()){
+						echo $content;
+					} else {
+						echo truncate_the_text($content, 200);
+					}
 				 ?>
 
 			</div><!-- .staff-member-single-content -->
@@ -155,7 +159,8 @@
 					<?php endif; ?>
 
 					<div class="staff-member-excerpt">
-						<?php the_excerpt(); ?>
+						<?php $your_post_object = get_the_ID();
+						echo pippin_excerpt_by_id($your_post_object, 30); ?>
 					</div><!-- .staff-member-excerpt -->
 
 					<?php if ( $staff_twitter || $staff_facebook || $staff_gplus || $staff_linkedin ) : ?>

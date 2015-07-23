@@ -38,6 +38,15 @@ if ( !defined( 'BP_AVATAR_FULL_HEIGHT' ) ) {
 	define( 'BP_AVATAR_FULL_HEIGHT', 200 );
 }
 
+if( ! function_exists('wpthumb')) {
+	include_once(get_template_directory() . '/lib/wpthumb/wpthumb.php');
+}
+
+if ( function_exists( 'add_image_size' ) ) {
+    add_image_size( 'venue-thumb', 300, 300, array( 'center', 'top' ));
+}
+
+
 require get_template_directory() . '/inc/functions.php';
 
 function truncate_the_text($text, $chars = 25) {
@@ -46,6 +55,42 @@ function truncate_the_text($text, $chars = 25) {
     $text = substr($text,0,strrpos($text,' '));
     $text = $text."...";
     return $text;
+}
+
+function pippin_excerpt_by_id($post, $length = 45, $tags = '<a><em><strong>', $extra = '') {
+
+	if(is_int($post)) {
+		// get the post object of the passed ID
+		$post = get_post($post);
+	} elseif(!is_object($post)) {
+		return false;
+	}
+
+	if(has_excerpt($post->ID)) {
+		$the_excerpt = $post->post_excerpt;
+		return apply_filters('the_content', $the_excerpt);
+	} else {
+		$the_excerpt = $post->post_content;
+	}
+
+	$the_excerpt = strip_shortcodes(strip_tags($the_excerpt), $tags);
+	$the_excerpt = preg_split('/\b/', $the_excerpt, $length * 2+1);
+	$excerpt_waste = array_pop($the_excerpt);
+	$permalink = get_permalink( $post->ID );
+	$the_excerpt = implode($the_excerpt);
+	$the_excerpt .= "...";
+
+	return apply_filters('the_content', $the_excerpt);
+}
+
+function crb_get_thumb_url($url, $width, $height, $crop = 1, $cache = true) {
+	$params = array(
+		'width' => $width,
+		'height' => $height,
+		'crop' => $crop,
+		'cache' => $cache,
+	);
+	return wpthumb($url, $params);
 }
 
 add_action( 'after_setup_theme', 'baw_theme_setup' );
@@ -1518,7 +1563,8 @@ if ( ! function_exists( 'dd_home_section_events' ) ) {
 												<h2 class="event-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
 												<div class="event-excerpt">
-													<?php the_excerpt(); ?>
+													<?php $your_post_object = get_the_ID();
+													   echo pippin_excerpt_by_id($your_post_object, 30); ?>
 												</div><!-- .event-excerpt -->
 
 											</div><!-- .event-main -->

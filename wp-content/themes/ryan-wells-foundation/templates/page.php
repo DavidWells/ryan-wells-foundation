@@ -11,7 +11,7 @@
 		</div><!-- .page-post-content -->
 
 		<div id="post-pagination">
-			<?php 
+			<?php
 				$args = array(
 					'before' => '',
 					'after' => '',
@@ -20,7 +20,7 @@
 					'next_or_number' => 'number',
 					'pagelink' => '%',
 				);
-				wp_link_pages( $args ); 
+				wp_link_pages( $args );
 			?>
 		</div><!-- #post-pagination -->
 

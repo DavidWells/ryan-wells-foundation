@@ -7,6 +7,7 @@
 	$event_info = get_post_meta( get_the_ID(), $dd_sn . 'event_info', true );
 	$event_fb = get_post_meta( get_the_ID(), $dd_sn . 'event_facebook_link', true );
 
+
 ?>
 
 	<div id="sidebar" class="one-third column last">
