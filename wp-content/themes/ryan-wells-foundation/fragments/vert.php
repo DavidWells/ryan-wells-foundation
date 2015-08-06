@@ -1,5 +1,5 @@
 <?php $vertical_sections = get_field('vertical_sections', $page_id, 'complex');
-$id_safe_prefix = 'slp-';
+$id_safe_prefix = 'slp_';
 $counter = 0; ?>
 <div class="long-container">
 
@@ -7,9 +7,9 @@ $counter = 0; ?>
 	<div class="content">
 		<?php foreach($vertical_sections as $section) :
 			$counter++;
-			$the_id = $id_safe_prefix + $counter;
+
 		 ?>
-			<div id="<?php echo $the_id;?>" class="section type-<?php echo $section['acf_fc_layout'];?>">
+			<div id='section_anchor_<?php echo $counter; ?>' class="section type-<?php echo $section['acf_fc_layout'];?>">
 				<?php if(!empty($section['section_title'])) : ?>
 					<h2 class="entry-title timeline-title"><?php echo $section['section_title']; ?></h2>
 				<?php endif;
