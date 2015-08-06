@@ -177,7 +177,7 @@ $id_safe_prefix = 'slp-'; ?>
 						echo wpautop(do_shortcode($section['content']));
 					}
 					?>
-					<div class="timeline">
+					<div id="timeline" class="timeline">
 
 
 						<?php foreach ($section["timeline"] as $idx=>$timeline_item): ?>
