@@ -6,10 +6,11 @@ $counter = 0; ?>
 
 	<div class="content">
 		<?php foreach($vertical_sections as $section) :
-			$counter++;
+			$count = $counter + 1;
 
 		 ?>
-			<div id='section_anchor_<?php echo $counter; ?>' class="section type-<?php echo $section['acf_fc_layout'];?>">
+			<div id='section_anchor_' class="section type-<?php echo $section['acf_fc_layout'];?>">
+			<?php echo $count;?>
 				<?php if(!empty($section['section_title'])) : ?>
 					<h2 class="entry-title timeline-title"><?php echo $section['section_title']; ?></h2>
 				<?php endif;
