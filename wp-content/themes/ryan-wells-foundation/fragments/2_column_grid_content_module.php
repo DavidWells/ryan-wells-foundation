@@ -4,13 +4,13 @@
 	$boxes 			= $layout['grid_items'];
 	$section_id 	= (isset($layout['section_id'])) ? $layout['section_id'] : '';
 	$section_id 	= str_replace("#", "", $section_id);
-
+	$id = preg_replace('/\s+/', '_', $section_title);
 	if ( empty($boxes) )
 		return;
 
 ?>
 
-<section id="<?php echo $section_id; ?>" class="section double-column-grid-content">
+<section id="<?php echo $id; ?>" class="section double-column-grid-content">
 	<div class="shell">
 
 		<?php if ( $section_title ) : ?>
