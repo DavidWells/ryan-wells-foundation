@@ -5983,6 +5983,11 @@ text-shadow: 0 2px 2px rgba(0,0,0,.15);
  .post-grid-layout .boxes .box .box-img.no-link-here:hover img {
  	opacity: 1;
  }
+ .post-70 .content-text ul li{
+	display: inline-block;
+	width: 49%;
+	list-style: inherit;
+ }
  .page-post-content {
  	display: block;
  	clear: both;
