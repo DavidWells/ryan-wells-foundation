@@ -9,8 +9,8 @@ $counter = 0; ?>
 			$count = $counter + 1;
 
 		 ?>
-			<div id='section_anchor_' class="section type-<?php echo $section['acf_fc_layout'];?>">
-			<?php echo $count;?>
+			<div id='section_anchor_<?php echo $count;?>' class="section type-<?php echo $section['acf_fc_layout'];?>">
+
 				<?php if(!empty($section['section_title'])) : ?>
 					<h2 class="entry-title timeline-title"><?php echo $section['section_title']; ?></h2>
 				<?php endif;
