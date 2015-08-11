@@ -109,7 +109,7 @@ $body_class = '';
 
 		<header id="header">
 
-			<?php //dd_multicol_colors(); ?>
+			<?php dd_multicol_colors(); ?>
 
 			<div id="header-inner" class="container clearfix">
 
