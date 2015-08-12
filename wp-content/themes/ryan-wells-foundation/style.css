@@ -4792,10 +4792,10 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
 	.section.type-timeline {
 		margin-top: 0px;
 	}
-	.su-spoiler-title {
+	#sidebar .su-spoiler-title {
 		font-size: 21px;
 	}
-	.su-spoiler-style-default:first-of-type {
+	#sidebar .su-spoiler-style-default:first-of-type {
 		margin-top: 10px;
 	}
 	#sidebar .su-spoiler-content ul li {
