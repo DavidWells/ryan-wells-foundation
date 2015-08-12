@@ -4790,7 +4790,21 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
 		display: block;
 	}
 	.section.type-timeline {
-		margin-top: 50px;
+		margin-top: 0px;
+	}
+	.su-spoiler-title {
+		font-size: 21px;
+	}
+	.su-spoiler-style-default:first-of-type {
+		margin-top: 10px;
+	}
+	#sidebar .su-spoiler-content ul li {
+	    /* border-bottom: 1px solid #ebebeb; */
+	    margin-bottom: 10px;
+	    padding-bottom: 0px;
+	}
+	#sidebar .su-spoiler-content ul {
+		margin-left: 10px;
 	}
 	.meet-founder p {
 		width: 90%;
@@ -5947,7 +5961,7 @@ text-shadow: 0 2px 2px rgba(0,0,0,.15);
 
  }
  .section:last-of-type {
- 	padding-bottom: 50px;
+ 	padding-bottom: 40px;
  }
  .double-column-content .row img {
  	max-width: 100%;
