@@ -4793,8 +4793,8 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
 	.section.type-timeline {
 		margin-top: 0px;
 	}
-	#sidebar .su-spoiler-title:first-of-type {
-		margin-top: 5px;
+	#sidebar .su-spoiler:first-of-type {
+		margin-top: 15px;
 	}
 	#sidebar .su-spoiler {
 	    margin-bottom: 10px;
