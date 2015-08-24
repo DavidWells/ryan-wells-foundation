@@ -505,7 +505,7 @@ iframe {
 		}
 
 		#content.two-thirds {
-			margin-right: 30px;
+			margin-right: 15px;
 			width: 70%;
 
 		}
@@ -556,7 +556,7 @@ iframe {
 	.container .fifteen.columns     { width: 1105px; }
 	.container .sixteen.columns     { width: 1180px; }
 
-	.container .one-third.column    { width: 29%; }
+	.container .one-third.column    { width: 28%; }
 	.container .two-thirds.column   { width: 780px; }
 
 	/* Offsets */
