@@ -6190,6 +6190,18 @@ text-shadow: 0 2px 2px rgba(0,0,0,.15);
  .single-dd_events .section.content-section .content-text {
 	width: 100%;
  }
+ .single-dd_events #sidebar ul li {
+ 	font-size: 14px;
+ 	color:#fff;
+ }
+ .single-dd_events #sidebar strong {
+     font-weight: bold;
+     font-size: 17px;
+     margin-top: 10px;
+     display: block;
+     color: #fff;
+ }
  .single-dd_events #sidebar ul {
  	list-style: none;
+ 	margin-left: 0px;
  }
