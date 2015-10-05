@@ -6190,3 +6190,6 @@ text-shadow: 0 2px 2px rgba(0,0,0,.15);
  .single-dd_events .section.content-section .content-text {
 	width: 100%;
  }
+ .single-dd_events #sidebar ul {
+ 	list-style: none;
+ }
