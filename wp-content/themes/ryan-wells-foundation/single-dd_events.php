@@ -76,6 +76,8 @@ $blocks = get_field( 'page_flexible_content');
 
 									<?php endif; ?>
 
+									<?php the_content(); ?>
+
 									<?php if ( $blocks ) {
 
 										foreach( $blocks as $layout) {
@@ -92,7 +94,7 @@ $blocks = get_field( 'page_flexible_content');
 										}
 									} ?>
 
-									<?php the_content(); ?>
+
 
 								</div><!-- .event-content -->
 
