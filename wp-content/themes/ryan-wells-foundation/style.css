@@ -5850,7 +5850,7 @@ text-shadow: 0 2px 2px rgba(0,0,0,.15);
  h6 { font-family: 'HelveticaNeueBold', arial, helvetica, sans-serif; font-size: 10px; line-height: 13px; font-weight: normal; }
 
  .button,
- .comments #commentform #submit {
+ .comments #commentform #submit, #inbound_form_submit {
 
  font-family: "Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
  font-size: 20px;
