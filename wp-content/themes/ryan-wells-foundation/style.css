@@ -6218,3 +6218,9 @@ text-shadow: 0 2px 2px rgba(0,0,0,.15);
  .post-grid-layout .boxes .box h4 {
  	padding-bottom: 0px;
  }
+ .su-column-size-2-3 {
+     width: 59.33% !important;
+ }
+ .inbound-field input[type=text], .inbound-field input[type=url], .inbound-field input[type=email], .inbound-field input[type=tel], .inbound-field input[type=number], .inbound-field input[type=password] {
+ 	width: 80% !important;
+ }
