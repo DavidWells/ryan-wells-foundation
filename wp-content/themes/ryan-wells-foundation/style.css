@@ -6230,6 +6230,9 @@ text-shadow: 0 2px 2px rgba(0,0,0,.15);
  .event-single .event-content form input,.event-single .event-content form textarea,.event-single .event-content form select {
 	font-size: 14px;
  }
+ .event-single .event-content table {
+ 	margin-bottom: 0px;
+ }
  .event-single .event-content form img[src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"] {
  	display: none;
  }
