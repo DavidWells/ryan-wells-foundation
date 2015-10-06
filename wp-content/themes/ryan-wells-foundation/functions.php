@@ -10,6 +10,12 @@ if ( ! isset( $content_width ) ) {
 	$content_width = 1180;
 }
 
+if( function_exists('acf_add_options_page') ) {
+
+	acf_add_options_page();
+
+}
+
 $dd_sn = 'dd_biosphere_';
 $dd_lang_curr = '';
 $dd_lang_default = '';
