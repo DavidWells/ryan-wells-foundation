@@ -6224,6 +6224,15 @@ text-shadow: 0 2px 2px rgba(0,0,0,.15);
  .inbound-field input[type=text], .inbound-field input[type=url], .inbound-field input[type=email], .inbound-field input[type=tel], .inbound-field input[type=number], .inbound-field input[type=password] {
  	width: 80% !important;
  }
+
+
+ .event-single #content.two-thirds {
+     margin-right: 15px;
+     width: 56%;
+ }
+ .event-single .container .one-third.column {
+     width: 41%;
+ }
  .event-single .event-content form {
 		width: 300px;
  }
