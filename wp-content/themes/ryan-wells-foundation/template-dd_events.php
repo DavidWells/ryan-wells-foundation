@@ -171,7 +171,7 @@ if ( isset( $_GET['dd_year'] ) ) {
 					endif;
 
 				?>
-				<h1>Past Events</h1>
+				<h2>Past Events</h2>
 				<?php
 					$past = array(
 						'paged' => $paged,
