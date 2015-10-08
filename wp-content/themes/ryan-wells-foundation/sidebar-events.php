@@ -16,7 +16,8 @@
 
 			<?php if ( is_single() ) : ?>
 			<?php 	$id = get_the_ID();
-					$custom_sidebar = get_field('custom_sidebar_top', $id); ?>
+					$custom_sidebar = get_field('custom_sidebar_top', $id);
+					$event_gallery = get_field('sidebar_content', 'option'); ?>
 
 				<div class="widget">
 
@@ -39,6 +40,7 @@
 								<em><?php echo $text; ?></em>
 								<span><?php the_time('F jS, Y'); ?></span>
 								<?php echo $custom_sidebar; ?>
+								<?php echo do_shortcode($event_gallery); ?>
 							</div>
 
 							<?php $parity = 'odd'; ?>
