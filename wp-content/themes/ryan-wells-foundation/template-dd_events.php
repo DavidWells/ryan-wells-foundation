@@ -151,14 +151,7 @@ if ( isset( $_GET['dd_year'] ) ) {
 					if ( $filter_to_call ) { add_filter( 'posts_where', $filter_to_call ); }
 
 					// Do the Query
-					$past = array(
-						'paged' => $paged,
-						'post_type' => 'dd_events',
-						'posts_per_page' => $posts_per_page,
-						'post_status' => array( 'publish' ),
-						'order' => 'DESC',
-					);
-					$past_query = new WP_Query($past);
+
 					$dd_query = new WP_Query($args);
 
 
@@ -178,8 +171,17 @@ if ( isset( $_GET['dd_year'] ) ) {
 					endif;
 
 				?>
-
+				<h1>Past Events</h1>
 				<?php
+					$past = array(
+						'paged' => $paged,
+						'post_type' => 'dd_events',
+						'posts_per_page' => $posts_per_page,
+						'post_status' => array( 'publish' ),
+						'order' => 'DESC',
+					);
+					$past_query = new WP_Query($past);
+					print_r($past_query);
 					$past_count = 0;
 					if ($past_query->have_posts()) : while ($past_query->have_posts()) : $past_query->the_post(); $past_count++;
 
