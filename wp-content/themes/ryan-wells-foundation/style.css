@@ -6197,9 +6197,12 @@ text-shadow: 0 2px 2px rgba(0,0,0,.15);
  }
  .single-dd_events #sidebar strong {
      font-weight: bold;
-     font-size: 17px;
+     font-size: 23px;
      margin-top: 10px;
      display: block;
+     color: #fff;
+ }
+ .single-dd_events #sidebar h2 a{
      color: #fff;
  }
  .single-dd_events #sidebar ul {
@@ -6246,6 +6249,6 @@ text-shadow: 0 2px 2px rgba(0,0,0,.15);
  .event-single .event-content table {
  	margin-bottom: 0px;
  }
- .event-single .event-content form img[src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"] {
+ .event-single .event-content form img[src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"], #header-extra-primary {
  	display: none;
  }
