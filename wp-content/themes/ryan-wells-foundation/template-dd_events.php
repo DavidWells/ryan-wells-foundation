@@ -185,7 +185,7 @@ if ( isset( $_GET['dd_year'] ) ) {
 
 							get_template_part( 'templates/events', '' );
 
-					endwhile; ?>
+					endwhile; endif; ?>
 
 			</div><!-- .events -->
 
