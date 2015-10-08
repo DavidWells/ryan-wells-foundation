@@ -181,7 +181,7 @@ if ( isset( $_GET['dd_year'] ) ) {
 						'order' => 'DESC',
 					);
 					$past_query = new WP_Query($past);
-					print_r($past_query);
+
 					$past_count = 0;
 					if ($past_query->have_posts()) : while ($past_query->have_posts()) : $past_query->the_post(); $past_count++;
 
