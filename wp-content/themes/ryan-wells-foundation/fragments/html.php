@@ -1,7 +1,7 @@
 <?php
 
 	$section_title 	= $layout['content_section_title'];
-	$section_text 	= $layout['content_text'];
+	$section_text 	= $layout['html'];
 	$section_id 	= (isset($layout['section_id'])) ? $layout['section_id'] : '';
 	$section_id 	= str_replace("#", "", $section_id);
 	$id = preg_replace('/\s+/', '_', $section_title);
