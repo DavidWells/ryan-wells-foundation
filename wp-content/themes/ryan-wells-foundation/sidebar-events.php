@@ -43,9 +43,7 @@
 
 							</div>
 
-							<div class="e-gallery">
-								<?php echo do_shortcode($event_gallery); ?>
-							</div>
+
 							<?php $parity = 'odd'; ?>
 
 							<?php if ( ! empty ( $event_info ) ) : ?>
@@ -65,6 +63,11 @@
 							<?php endif; ?>
 
 						</div><!-- .event-info-widget -->
+
+						<div class="e-gallery">
+							<?php echo do_shortcode($event_gallery); ?>
+						</div>
+
 
 					</div><!-- .widget-wrap -->
 
