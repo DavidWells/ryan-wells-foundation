@@ -1,9 +1,9 @@
-<?php 
+<?php
 /*
 	Template Name: Events
 */
 
-get_header(); 
+get_header();
 
 // Get Options
 $layout = get_post_meta( get_the_ID(), $dd_sn . 'layout', true );
@@ -36,7 +36,7 @@ if ( $layout == 'cs' ) {
 	$has_sidebar = false;
 
 	// Template vars (globals)
-	
+
 	if ( $post_width == 'one_half' ) {
 		$dd_post_class = 'eight columns ';
 		$dd_thumb_size = 'dd-one-half';
@@ -99,14 +99,14 @@ if ( isset( $_GET['dd_year'] ) ) {
 
 			<div class="events events-listing <?php echo $events_class; ?> clearfix">
 
-				<?php					
+				<?php
 
 					if(is_front_page()){ $paged = (get_query_var('page')) ? get_query_var('page') : 1; }else{ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; }
 
 					if ( $what_to_show == 'past' ) {
 
 						$args = array(
-							'paged' => $paged, 
+							'paged' => $paged,
 							'post_type' => 'dd_events',
 							'posts_per_page' => $posts_per_page,
 							'post_status' => array( 'publish' ),
@@ -116,7 +116,7 @@ if ( isset( $_GET['dd_year'] ) ) {
 					} else if ( $month ) {
 
 						$args = array(
-							'paged' => $paged, 
+							'paged' => $paged,
 							'post_type' => 'dd_events',
 							'posts_per_page' => $posts_per_page,
 							'post_status' => array( 'future', 'publish' ),
@@ -127,7 +127,7 @@ if ( isset( $_GET['dd_year'] ) ) {
 					} else if ( $year ) {
 
 						$args = array(
-							'paged' => $paged, 
+							'paged' => $paged,
 							'post_type' => 'dd_events',
 							'posts_per_page' => $posts_per_page,
 							'post_status' => array( 'future', 'publish' ),
@@ -138,7 +138,7 @@ if ( isset( $_GET['dd_year'] ) ) {
 					} else {
 
 						$args = array(
-							'paged' => $paged, 
+							'paged' => $paged,
 							'post_type' => 'dd_events',
 							'posts_per_page' => $posts_per_page,
 							'post_status' => array( 'future', 'publish' ),
@@ -146,12 +146,21 @@ if ( isset( $_GET['dd_year'] ) ) {
 						);
 
 					}
-					
+
 					// Add Filter
 					if ( $filter_to_call ) { add_filter( 'posts_where', $filter_to_call ); }
-					
+
 					// Do the Query
+					$past = array(
+						'paged' => $paged,
+						'post_type' => 'dd_events',
+						'posts_per_page' => $posts_per_page,
+						'post_status' => array( 'publish' ),
+						'order' => 'DESC',
+					);
+					$past_query = new WP_Query($past);
 					$dd_query = new WP_Query($args);
+
 
 					// Remove Filter
 					if ( $filter_to_call ) { remove_filter( 'posts_where', $filter_to_call ); }
@@ -159,7 +168,7 @@ if ( isset( $_GET['dd_year'] ) ) {
 					// Loop
 
 					if ($dd_query->have_posts()) : while ($dd_query->have_posts()) : $dd_query->the_post(); $dd_count++;
-						
+
 							get_template_part( 'templates/events', '' );
 
 					endwhile; else:
@@ -170,12 +179,20 @@ if ( isset( $_GET['dd_year'] ) ) {
 
 				?>
 
+				<?php
+					$past_count = 0;
+					if ($past_query->have_posts()) : while ($past_query->have_posts()) : $past_query->the_post(); $past_count++;
+
+							get_template_part( 'templates/events', '' );
+
+					endwhile; ?>
+
 			</div><!-- .events -->
 
 			<?php
 				$num_pages = $dd_query->max_num_pages;
-				dd_theme_pagination( $num_pages ); 
-				wp_reset_postdata(); 
+				dd_theme_pagination( $num_pages );
+				wp_reset_postdata();
 			?>
 
 		</div><!-- #content -->
