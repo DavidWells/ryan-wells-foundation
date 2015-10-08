@@ -206,7 +206,9 @@ $body_class = '';
 					<div id="header-extra-primary">
 
 						<?php if ( ot_get_option( $dd_sn . 'header_bt_donate', 'enabled' ) == 'enabled' && dd_get_post_id( 'template', 'template-donate.php' ) != '' ) : ?>
-							<a href="<?php echo get_permalink( dd_get_post_id( 'template', 'template-donate.php' ) ); ?>" class="dd-button green has-icon"><?php _e( 'MAKE A DONATION', 'dd_string' ); ?><span class="dd-button-icon"><span class="icon-plus"></span></span></a>
+
+							<a target="_blank" href="https://ryanwellsfnd.z2systems.com/np/clients/ryanwellsfnd/donation.jsp" class="dd-button green has-icon"><?php _e( 'MAKE A DONATION', 'dd_string' ); ?><span class="dd-button-icon"><span class="icon-plus"></span></span></a>
+							<!--<a href="<?php echo get_permalink( dd_get_post_id( 'template', 'template-donate.php' ) ); ?>" class="dd-button green has-icon"><?php _e( 'MAKE A DONATION', 'dd_string' ); ?><span class="dd-button-icon"><span class="icon-plus"></span></span></a> -->
 						<?php endif; ?>
 
 						<?php if ( defined( 'ICL_SITEPRESS_VERSION' ) && ot_get_option( $dd_sn . 'header_bt_language', 'enabled' ) == 'enabled' ) : ?>
