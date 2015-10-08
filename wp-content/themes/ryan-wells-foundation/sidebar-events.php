@@ -40,9 +40,12 @@
 								<em><?php echo $text; ?></em>
 								<span><?php the_time('F jS, Y'); ?></span>
 								<?php echo $custom_sidebar; ?>
-								<?php echo do_shortcode($event_gallery); ?>
+
 							</div>
 
+							<div class="e-gallery">
+								<?php echo do_shortcode($event_gallery); ?>
+							</div>
 							<?php $parity = 'odd'; ?>
 
 							<?php if ( ! empty ( $event_info ) ) : ?>
