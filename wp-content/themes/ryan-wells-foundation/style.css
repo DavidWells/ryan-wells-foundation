@@ -1832,7 +1832,7 @@ iframe {
 
 				.events-calendar-wrapper-inner {
 					position: relative;
-					width: 800px;
+					width: 100%;
 					overflow: hidden;
 				}
 
@@ -1840,7 +1840,7 @@ iframe {
 						float: left;
 						font-size: 12px;
 						position: relative;
-						width: 380px;
+						width: 100%;
 					}
 
 					.events-calendar a {
