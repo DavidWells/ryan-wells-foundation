@@ -5,13 +5,6 @@
 
 get_header();
 
-$blocks = get_field( 'page_flexible_content', 5);
-if ( empty ( $lay ) ) { $lay = 'cs'; }
-
-// Content Class
-$content_class = '';
-if ( $lay == 'cs' ) { $content_class = 'two-thirds column'; }
-
 	global $dd_sn;
 
 	while ( have_posts() ) : the_post();
@@ -20,51 +13,6 @@ if ( $lay == 'cs' ) { $content_class = 'two-thirds column'; }
 
 			<div class="real-content home-section even">
 				<div class="container">
-
-						<div id="content" class="<?php echo $content_class; ?>">
-
-							<?php
-
-								if (have_posts()) : while (have_posts()) : the_post();
-
-									get_template_part( 'templates/page', '' );
-
-								endwhile; endif;
-
-							?>
-
-							<?php if ( $blocks ) {
-
-								foreach( $blocks as $layout) {
-									$section = $layout['acf_fc_layout'];
-
-									if ( $section == 'header_area' ) {
-										// The main heading section
-										crb_heading_section( $layout );
-									} else {
-
-										include( locate_template( 'fragments/' . $section . '.php' ) );
-
-									}
-								}
-							} ?>
-
-							<?php $vertical_sections = get_field('vertical_sections', $page_id, 'complex');
-							if(!empty($vertical_sections)) : ?>
-								<div class="main">
-
-									<div class="shell">
-
-										<?php include( locate_template( 'fragments/vert.php' ) ); ?>
-
-									</div><!-- /.shell -->
-								</div><!-- /.main -->
-							<?php endif; ?>
-
-						</div>
-
-						<?php if ( $lay == 'cs' ) { get_sidebar( 'page' ); } ?>
-
 					<?php the_content(); ?>
 				</div>
 			</div>
