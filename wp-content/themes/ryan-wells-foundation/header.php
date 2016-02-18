@@ -885,11 +885,7 @@ $body_class = '';
 			$lay = get_post_meta( get_the_ID(), $dd_sn . 'layout', true );
 			$blocks = get_field( 'page_flexible_content', 5);
 	  ?>
-				<div class="container">
-					<div class="homepage-content-top">
-							<?php //the_field('top_content', 'option'); ?>
-					</div>
-				</div>
+
 				<div class="container clearfix">
 
 					<div id="content">
