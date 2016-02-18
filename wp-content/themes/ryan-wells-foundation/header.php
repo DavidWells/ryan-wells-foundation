@@ -886,8 +886,12 @@ $body_class = '';
 			$blocks = get_field( 'page_flexible_content', 5);
 	  ?>
 
-				<div class="container clearfix">
-
+				<div class="container clearfix" style="padding:0px;">
+					<style type="text/css">
+						.section {
+								padding-top: 0px;
+						}
+					</style>
 					<div id="content">
 
 						<?php
