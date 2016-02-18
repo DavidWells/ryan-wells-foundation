@@ -1137,10 +1137,10 @@ iframe {
 				}
 
 					.slide-info-inner {
-						background-color: rgba( 23, 33, 41, 0.66 );
-						-moz-box-shadow: 0 3px 7px rgba(0,0,0,.44);
-						-webkit-box-shadow: 0 3px 7px rgba(0,0,0,.44);
-						box-shadow: 0 3px 7px rgba(0,0,0,.44);
+						background-color: rgba( 23, 33, 41, 0.15 );
+						-moz-box-shadow: 0 3px 7px rgba(0,0,0,0.15);
+						-webkit-box-shadow: 0 3px 7px rgba(0,0,0,0.15);
+						box-shadow: 0 3px 7px rgba(0,0,0,0.15);
 						padding: 22px 30px;
 					}
 

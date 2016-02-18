@@ -880,3 +880,9 @@ $body_class = '';
 		?>
 
 		<section id="main">
+
+		<?php if(is_page(5)) { ?>
+				<div class="homepage-content-top">
+						<?php the_field('top_content', 'option'); ?>
+				</div>
+		<?php }
