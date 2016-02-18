@@ -446,9 +446,12 @@ function dd_theme_scripts() {
 
 	wp_enqueue_script( 'dd-paypal', 'https://www.paypalobjects.com/js/external/apdg.js', '', DD_THEME_VERSION, true );
 
+	wp_enqueue_script( 'magnific-popup', get_template_directory_uri() . '/js/jquery.magnific-popup.min.js', array( 'jquery' ), DD_THEME_VERSION, true );
 	/* Custom JS */
-	wp_enqueue_script( 'main-js', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), DD_THEME_VERSION, true );
+	wp_enqueue_script( 'main-js', get_template_directory_uri() . '/js/main.js', array( 'jquery', 'magnific-popup' ), DD_THEME_VERSION, true );
 	wp_localize_script( 'main-js', 'DDAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+
+
 
 	/* Comment Reply JS */
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

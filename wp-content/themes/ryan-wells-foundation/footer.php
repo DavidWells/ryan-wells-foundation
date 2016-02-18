@@ -252,6 +252,16 @@ global $dd_paypal_url;
 	jQuery(document).ready(function($) {
    		$('p:empty').remove();
 
+			jQuery('.slide').eq(0).find('.slide-link').magnificPopup({
+			         disableOn: 700,
+			         type: 'iframe',
+			         mainClass: 'mfp-fade',
+			         removalDelay: 160,
+			         preloader: false,
+			         fixedContentPos: false
+			});
+
+
    		function externalLinks() {
    		  for(var c = document.getElementsByTagName("a"), a = 0;a < c.length;a++) {
    		    var b = c[a];
