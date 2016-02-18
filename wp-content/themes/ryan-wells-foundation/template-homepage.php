@@ -4,7 +4,8 @@
 */
 
 get_header();
-$blocks = get_field( 'page_flexible_content');
+
+$blocks = get_field( 'page_flexible_content', 5);
 if ( empty ( $lay ) ) { $lay = 'cs'; }
 
 // Content Class
