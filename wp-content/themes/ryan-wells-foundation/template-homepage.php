@@ -3,7 +3,13 @@
 	Template Name: Homepage
 */
 
-get_header(); 
+get_header();
+$blocks = get_field( 'page_flexible_content');
+if ( empty ( $lay ) ) { $lay = 'cs'; }
+
+// Content Class
+$content_class = '';
+if ( $lay == 'cs' ) { $content_class = 'two-thirds column'; }
 
 	global $dd_sn;
 
@@ -13,6 +19,51 @@ get_header();
 
 			<div class="real-content home-section even">
 				<div class="container">
+
+						<div id="content" class="<?php echo $content_class; ?>">
+
+							<?php
+
+								if (have_posts()) : while (have_posts()) : the_post();
+
+									get_template_part( 'templates/page', '' );
+
+								endwhile; endif;
+
+							?>
+
+							<?php if ( $blocks ) {
+
+								foreach( $blocks as $layout) {
+									$section = $layout['acf_fc_layout'];
+
+									if ( $section == 'header_area' ) {
+										// The main heading section
+										crb_heading_section( $layout );
+									} else {
+
+										include( locate_template( 'fragments/' . $section . '.php' ) );
+
+									}
+								}
+							} ?>
+
+							<?php $vertical_sections = get_field('vertical_sections', $page_id, 'complex');
+							if(!empty($vertical_sections)) : ?>
+								<div class="main">
+
+									<div class="shell">
+
+										<?php include( locate_template( 'fragments/vert.php' ) ); ?>
+
+									</div><!-- /.shell -->
+								</div><!-- /.main -->
+							<?php endif; ?>
+
+						</div>
+
+						<?php if ( $lay == 'cs' ) { get_sidebar( 'page' ); } ?>
+
 					<?php the_content(); ?>
 				</div>
 			</div>
@@ -21,7 +72,7 @@ get_header();
 
 	endwhile;
 
-	$home_sections = ot_get_option( $dd_sn . 'home_sections', false );	
+	$home_sections = ot_get_option( $dd_sn . 'home_sections', false );
 
 	if ( $home_sections ) {
 
@@ -29,8 +80,8 @@ get_header();
 
 		foreach ( $home_sections as $home_section ) {
 
-			if ( $parity == 'odd' ) { 
-				$parity = 'even'; 
+			if ( $parity == 'odd' ) {
+				$parity = 'even';
 			} else {
 				$parity = 'odd';
 			}
@@ -81,6 +132,6 @@ get_header();
 
 	}
 
-get_footer(); 
+get_footer();
 
 ?>
