@@ -881,10 +881,60 @@ $body_class = '';
 
 		<section id="main">
 
-		<?php if(is_page(5)) { ?>
+		<?php if(is_page(5)) {
+
+			$blocks = get_field( 'page_flexible_content', 5);
+	  ?>
 				<div class="container">
 					<div class="homepage-content-top">
 							<?php the_field('top_content', 'option'); ?>
 					</div>
 				</div>
+				<div class="container clearfix">
+
+					<div id="content" class="<?php echo $content_class; ?>">
+
+						<?php
+
+							if (have_posts()) : while (have_posts()) : the_post();
+
+								get_template_part( 'templates/page', '' );
+
+							endwhile; endif;
+
+						?>
+
+						<?php if ( $blocks ) {
+
+							foreach( $blocks as $layout) {
+								$section = $layout['acf_fc_layout'];
+
+								if ( $section == 'header_area' ) {
+									// The main heading section
+									crb_heading_section( $layout );
+								} else {
+
+									include( locate_template( 'fragments/' . $section . '.php' ) );
+
+								}
+							}
+						} ?>
+
+						<?php $vertical_sections = get_field('vertical_sections', 5, 'complex');
+						if(!empty($vertical_sections)) : ?>
+							<div class="main">
+
+								<div class="shell">
+
+									<?php include( locate_template( 'fragments/vert.php' ) ); ?>
+
+								</div><!-- /.shell -->
+							</div><!-- /.main -->
+						<?php endif; ?>
+
+					</div>
+
+					<?php if ( $lay == 'cs' ) { get_sidebar( 'page' ); } ?>
+
+				</div><!-- .container -->
 		<?php }
