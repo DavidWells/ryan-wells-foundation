@@ -892,13 +892,13 @@ $body_class = '';
 				</div>
 				<div class="container clearfix">
 
-					<div id="content" class="<?php echo $content_class; ?>">
+					<div id="content">
 
 						<?php
 
 							if (have_posts()) : while (have_posts()) : the_post();
 
-								get_template_part( 'templates/page', '' );
+								//get_template_part( 'templates/page', '' );
 
 							endwhile; endif;
 
