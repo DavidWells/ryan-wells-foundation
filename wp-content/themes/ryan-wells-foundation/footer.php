@@ -250,7 +250,11 @@ global $dd_paypal_url;
 	<?php wp_footer(); ?>
 	<script type="text/javascript">
 	jQuery(document).ready(function($) {
-   		$('p:empty').remove();
+   		$('p:empty, #content:empty').remove();
+
+			if(jQuery("#content").html() === "") {
+				$('#content').remove();
+			}
 
 			jQuery('.slide').eq(0).find('.slide-link').magnificPopup({
 			         disableOn: 700,
