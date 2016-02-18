@@ -252,7 +252,7 @@ global $dd_paypal_url;
 	jQuery(document).ready(function($) {
    		$('p:empty, #content:empty').remove();
 
-			if(jQuery("#content").html() === "") {
+			if(jQuery("#content").html().trim() === "") {
 				$('#content').remove();
 			}
 
