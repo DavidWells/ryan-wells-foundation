@@ -208,10 +208,10 @@ $body_class = '';
 						<?php if ( ot_get_option( $dd_sn . 'header_bt_donate', 'enabled' ) == 'enabled' && dd_get_post_id( 'template', 'template-donate.php' ) != '' ) : ?>
 							<?php
 									$donate_link = get_field('donate_link', 'option');
-									if($donate_link) {
+									if ($donate_link) {
 										$donate_link_final = $donate_link;
 									} else {
-										$donate_link_final = 'https://ryanwellsfnd.z2systems.com/np/clients/ryanwellsfnd/donation.jsp'
+										$donate_link_final = 'https://ryanwellsfnd.z2systems.com/np/clients/ryanwellsfnd/donation.jsp';
 									}
 							?>
 							<a target="_blank" href="<?php echo $donate_link_final;?>" class="dd-button green has-icon"><?php _e( 'MAKE A DONATION', 'dd_string' ); ?><span class="dd-button-icon"><span class="icon-plus"></span></span></a>
